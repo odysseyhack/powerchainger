@@ -1,6 +1,6 @@
 defmodule EnergyTree.Persistence do
   def persist_user(user_struct) do
-    persistence_impl().persist_user(player_struct)
+    persistence_impl().persist_user(user_struct)
   end
 
   def load_user(user_key) do
