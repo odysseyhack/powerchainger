@@ -3,4 +3,4 @@ exclude:
   - /priv/*
   - /_build/*
   - /deps/*
-  - /assets/*.config.js
+  - /assets/webpack.config.js
