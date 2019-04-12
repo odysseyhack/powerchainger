@@ -1,2 +1,6 @@
-languages:
-- elixir
+exclude:
+  - /priv/
+  - /_build/
+  - /\.git/
+  - /deps/
+  - /assets
