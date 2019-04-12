@@ -15,7 +15,8 @@ config :energy_tree, EnergyTreeWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "xES0JH/nAaHlkBJ6mhhuTUlB6EIfckzaPuUlsnsXsw7ybY6i988XZRPyYQv13tKg",
   render_errors: [view: EnergyTreeWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: EnergyTree.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: EnergyTree.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "9p90qeft"]
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -42,6 +42,8 @@ defmodule EnergyTreeWeb do
       import EnergyTreeWeb.ErrorHelpers
       import EnergyTreeWeb.Gettext
       alias EnergyTreeWeb.Router.Helpers, as: Routes
+
+      import Phoenix.LiveView, only: [live_render: 2, live_render: 3]
     end
   end
 
