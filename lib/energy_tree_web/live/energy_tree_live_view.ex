@@ -14,7 +14,9 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
 
   def mount(_session, socket) do
     schedule()
-    {:ok, assign(socket, val: 72, mode: :cooling, time: NaiveDateTime.utc_now, title: "Powerchainger")}
+
+    {user_id, user} = EnergyTree.User.Server.inspect
+    {:ok, assign(socket, val: 72, mode: :cooling, time: NaiveDateTime.utc_now, title: user.name || "Powerchainger")}
   end
 
   def handle_info(:tick, socket) do
@@ -23,6 +25,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   def handle_event("changed_name", %{"q" => new_name}, socket) do
+    {user_id, user} = EnergyTree.User.Server.inspect
+    EnergyTree.User.Server.set(user |> Map.put(:name, new_name))
     {:noreply, assign(socket, title: new_name)}
   end
 
