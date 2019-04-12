@@ -1,5 +1,5 @@
 defmodule EnergyTree.User.Server do
-  use ExActor.GenServer
+  use ExActor.GenServer, export: __MODULE__
 
   alias EnergyTree.Persistence
   alias EnergyTree.User
