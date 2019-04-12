@@ -3,8 +3,12 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
 
   def render(assigns) do
     ~L"""
-    <h1> <%= assigns.title %></h1>
-    Current time: <%= assigns.time %>
+    <h1> <%= @title %></h1>
+    Current time: <%= @time %>
+
+    <form phx-change="changed_name" >
+      <input name="q" placeholder="name" value="<%= @title %>" />
+    </form>
     """
   end
 
@@ -16,6 +20,10 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   def handle_info(:tick, socket) do
     schedule()
     {:noreply, assign(socket, time: NaiveDateTime.utc_now)}
+  end
+
+  def handle_event("changed_name", %{"q" => new_name}, socket) do
+    {:noreply, assign(socket, title: new_name)}
   end
 
   defp schedule() do
