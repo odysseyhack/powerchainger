@@ -1,6 +1,6 @@
+component_depth: 3
 exclude:
-  - /priv/
-  - /_build/
-  - /\.git/
-  - /deps/
-  - /assets
+  - /priv/*
+  - /_build/*
+  - /deps/*
+  - /assets/*.config.js
