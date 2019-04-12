@@ -2,6 +2,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   use Phoenix.LiveView
 
   def render(assigns) do
+    {:ok, trytes} = IotaEx.Trytes.from_binary(assigns.title)
     ~L"""
     <h1> <%= @title %></h1>
     Current time: <%= @time %>
@@ -9,6 +10,10 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     <form phx-change="changed_name" >
       <input name="q" placeholder="name" value="<%= @title %>" />
     </form>
+
+    <h2>
+    In Trytes: <%= trytes %>
+    </h2>
     """
   end
 

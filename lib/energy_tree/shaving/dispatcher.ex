@@ -9,7 +9,7 @@ defmodule EnergyTree.Shaving.Dispatcher do
     end
   end
 
-  def should_shave(aggregate) do
+  def should_shave?(aggregate) do
     # TODO
   end
 
@@ -21,6 +21,6 @@ defmodule EnergyTree.Shaving.Dispatcher do
     # TODO
   end
 
-  def ask_prosumers_to_produce(prosumers) do
+  def ask_some_prosumers_to_produce(prosumers) do
   end
 end
