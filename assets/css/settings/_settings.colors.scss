@@ -1,0 +1,38 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+/**
+ *  Make sure you don't specify reserved CSS color names as the key as SASS
+ *  will try to parse it...
+ */
+
+$colorMap: (
+  base: (
+    description: 'Base gray color',
+    100: #F1F3F3,
+    200: #E6E9EA,
+    300: #DBDFE0,
+    400: #C3C9CB,
+    500: #A5AFB1,
+    600: #849195,
+    700: #6A787B,
+    800: #475052,
+    900: #3B4345,
+  ),
+  brand: (
+    description: '',
+    dark: #00A88B,
+    base: #00DDB7,
+    light: #66FFE5
+  ),
+  text: (
+    description: '',
+    base: #3B4345
+  ),
+  orange: (
+    description: '',
+    base: #f27b22,
+    dark: #f36622
+  )
+);

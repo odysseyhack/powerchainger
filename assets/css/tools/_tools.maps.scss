@@ -1,0 +1,28 @@
+/* ==========================================================================
+   #MAPS
+   ========================================================================== */
+
+/*
+ * Grab a color from a SASS map
+ * Usage:
+ * background: color(brand);
+ * background: color(blue-muted, light);
+ * http://www.bigeng.io/how-we-use-sass-maps-for-design-tokens-and-developer-happiness/
+ */
+
+@function color($color, $tone: "base") {
+  @if map-has-key($colorMap, $color) {
+    @return map-get(map-get($colorMap, $color), $tone);
+  }
+  @else {
+   @warn "Unfortunately, no value could be retrieved from `#{$color}`. "
+     + "Please make sure it is defined in `$color` map.";
+  }
+}
+
+
+@function spacing($key) {
+    @if map-has-key($spacingMap, $key) {
+        @return map-get($spacingMap, $key);
+    }
+}

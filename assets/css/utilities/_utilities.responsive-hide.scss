@@ -1,0 +1,26 @@
+// backslash (e.g. `u-margin-bottom@mobile`).
+$inuit-widths-breakpoint-separator: \@ !default;
+
+/* stylelint-disable max-nesting-depth */
+
+@each $inuit-bp-name, $inuit-bp-value in $mq-breakpoints {
+
+  @include mq($from: $inuit-bp-name) {
+
+    .u-hidden-from#{$inuit-widths-breakpoint-separator}#{$inuit-bp-name} {
+      display: none !important;
+    }
+
+  }
+
+  @include mq($until: $inuit-bp-name) {
+
+    .u-hidden-until#{$inuit-widths-breakpoint-separator}#{$inuit-bp-name} {
+      display: none !important;
+    }
+
+  }
+
+}
+
+/* stylelint-enable max-nesting-depth */
