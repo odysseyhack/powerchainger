@@ -10,11 +10,11 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Event do
   - `:surplus` for when adding renewable energy such as solar power back to the grid.
   """
 
-  @kinds [:delivery, :outside_peak, :surplus]
+  @kinds [:delivery, :outside_peak, :surplus, :datetime]
 
   defstruct [:kind, amount: 0, time: nil]
 
-  def new(kind, amount, datetime = %NaiveDatetime{} \\ NaiveDateTime.utc_now) when kind in @kinds and amount >= 0 do
+  def new(kind, amount, datetime = %NaiveDateTime{} \\ NaiveDateTime.utc_now) when kind in @kinds and amount >= 0 do
     %__MODULE__{kind: kind, amount: amount, datetime: datetime}
   end
   def new(_, _, _) do
