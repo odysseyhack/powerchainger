@@ -1,0 +1,43 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+/**
+ * Utility classes for giving color properties, like:
+ *
+ *   .u-color-light-green {}
+ *   .u-color-red {}
+ *   .u-bg-color-light-green {}
+ *   .u-bg-color-red {}
+ *   etc.
+ */
+
+/* stylelint-disable string-quotes */
+
+
+
+$color-properties: (
+  'color': 'color',
+  'bg-color': 'background-color',
+) !default;
+
+$color-values: (
+  '-white': #fff
+) !default;
+
+
+@each $property-namespace, $property in $color-properties {
+  
+  @each $value-namespace, $value in $color-values {
+    
+    .u-#{$property-namespace}#{$value-namespace} {
+    
+      #{$property}: $value !important;
+    
+    }
+
+  }
+
+}
+
+/* stylelint-enable string-quotes */

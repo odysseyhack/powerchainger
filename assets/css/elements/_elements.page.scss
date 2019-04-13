@@ -1,0 +1,49 @@
+html {
+    height: 100%;
+    min-height: 0;
+    overflow: initial;
+    font-size: ms(0);
+
+    @include mq($from: tablet) {
+        font-size: ms(0, $thread: large);
+    }
+
+    @include mq($from: desktop) {
+        // fixes scrollbar jump issues
+        // see: https://css-tricks.com/elegant-fix-jumping-scrollbar-issue/
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    // style text selection
+    ::selection {
+        background: color(brand);
+        color: #fff;
+    }
+
+    ::-moz-selection {
+        background: color(brand);
+        color: #fff;
+    }
+}
+
+body {
+    height: 100%;
+    min-height: 100vh;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color: color(text);
+    font-family: $global-font-family;
+    font-size: 1rem;
+    font-weight: 400;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+}

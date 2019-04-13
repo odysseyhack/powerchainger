@@ -1,4 +1,6 @@
-<button phx-click="toggle_menu">Settings</button>
+<a class="c-settings-toggle" phx-click="toggle_menu">
+    <i class="bx bx-cog"></i>
+</a>
 <%= if @navigation.show_settings? do %>
 <div>
   Car Info

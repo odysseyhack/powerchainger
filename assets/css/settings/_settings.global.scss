@@ -1,0 +1,72 @@
+///* ========================================================================
+//   #GLOBAL
+//   ======================================================================== */
+// The global settings file contains any project-wide variables; things that
+// need to be made available to the entire codebase.
+
+$global-font-family: 'rubrik-new', sans-serif;
+
+// Base typographical styles.
+
+$inuit-global-font-size: 18px;
+$inuit-global-line-height: $inuit-global-spacing-unit;
+
+// MQ breakpoints
+$mq-breakpoints: (
+  mobile:  420px,
+  phablet: 640px,
+  tablet:  820px,
+  desktop: 920px,
+  wide:    1040px,
+  widest:  1160px
+);
+
+// Ratios
+$inuit-ratios: (
+  "2\\:1" : (2:1)
+);
+
+// Miscellaneous
+$global-radius: 50px;
+
+// CSS transitions/animations
+$easeOutExpo: cubic-bezier(.19, 1, .22, 1);
+$global-transition: all 300ms $easeOutExpo;
+
+
+
+// Responsive spacing properties
+// Be aware that adding more properties will generate a lot more classnames (= increasing file size)
+$inuit-responsive-spacing-directions: (
+  null: null,
+  '-top': '-top',
+  '-bottom': '-bottom',
+  '-vertical': '-top' '-bottom'
+);
+$inuit-responsive-spacing-properties: (
+  'margin': 'margin',
+);
+
+// Spacing
+$inuit-global-spacing-unit-factor-tiniest:   0.5;
+$inuit-global-spacing-unit-tiniest:  $inuit-global-baseline * $inuit-global-spacing-unit-factor-tiniest;
+
+$inuit-spacing-sizes: (
+  null: $inuit-global-spacing-unit,
+  '-tiniest': $inuit-global-spacing-unit-tiniest,
+  '-tiny': $inuit-global-spacing-unit-tiny,
+  '-small': $inuit-global-spacing-unit-small,
+  '-large': $inuit-global-spacing-unit-large,
+  '-huge': $inuit-global-spacing-unit-huge,
+  '-none': 0
+);
+
+$inuit-responsive-spacing-sizes: (
+  null: $inuit-global-spacing-unit,
+  '-tiniest': $inuit-global-spacing-unit-tiniest,
+  '-tiny': $inuit-global-spacing-unit-tiny,
+  '-small': $inuit-global-spacing-unit-small,
+  '-large': $inuit-global-spacing-unit-large,
+  '-huge': $inuit-global-spacing-unit-huge,
+  '-none': 0
+);
