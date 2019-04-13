@@ -1,6 +1,5 @@
 <button phx-click="toggle_menu">Menu</button>
 <%= if @navigation.show_menu? do %>
-Menu open
 <div>
   Car Info
 </div>
@@ -16,14 +15,16 @@ Menu open
     <li>Forget My Car</li>
   </ul>
 </nav>
-<% else %>
-Menu closed
 <% end %>
 
 <%= if @navigation.page == :dashboard do %>
   <%= render "dashboard.html", assigns %>
 <% end %>
-<% if false do %>
+<%= if @navigation.page == :tokens do %>
+  <%= render "tokens.html", assigns %>
+<% end %>
+
+<%= if false do %>
 <h1><%= @user.name %>
 </h1>
 <h2>

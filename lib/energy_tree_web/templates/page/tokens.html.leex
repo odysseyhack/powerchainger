@@ -1,0 +1,20 @@
+<%= for time_period <- [:day, :week, :month, :year] do %>
+  <h2>30</h2>
+  <h3><%= time_period %></h3>
+<% end %>
+  <div class="level">
+      Level: Grandmaster
+  </div>
+
+  <div class="history">
+      <%= for day <- Enum.reverse(1..10) do %>
+        <div class="date">
+            <%= day %> April
+        </div>
+        <ul class="events">
+            <%= for event <- 1..5 do %>
+                <li> + <%= event %> ICON</li>
+            <% end %>
+        </ul>
+      <% end %>
+  </div>

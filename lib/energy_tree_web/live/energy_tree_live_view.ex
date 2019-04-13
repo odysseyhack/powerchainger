@@ -7,7 +7,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
       %__MODULE__{page: :dashboard, show_menu?: false}
     end
 
-    @pages [:dashboard, :profile, :settings, :sign_out]
+    @pages [:dashboard, :tokens, :profile, :settings, :sign_out]
 
     def navigate_to(struct, page) when page in @pages do
       %__MODULE__{struct | page: page}
