@@ -1,15 +1,19 @@
 <button phx-click="change_page" phx-value="dashboard">Back</button>
-<%= for time_period <- [:day, :week, :month, :year] do %>
-  <h2>30</h2>
-  <h3><%= time_period %></h3>
-<% end %>
+<div class="token_amounts">
+    <div class="today">
+        30
+    </div>
+    <div class="all_time">
+        42
+    </div>
+</div>
 
 <div class="level">
     Level: Grandmaster
 </div>
 
 <div class="history">
-    <%= for day <- Enum.reverse(1..10) do %>
+    <%= for day <- @token_history do %>
     <div class="date">
         <%= day %> April
     </div>
