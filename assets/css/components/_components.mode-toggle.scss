@@ -1,0 +1,70 @@
+.c-mode-toggle {
+    $el: '.c-mode-toggle';
+    
+    background: color(base, 100);
+    border: 3px solid #fff;
+    border-radius: 19px;
+    color: color(base, 700);
+    display: flex;
+    font-weight: 500;
+    height: 38px;
+    margin-left: $space;
+    margin-bottom: $space-tiny;
+    margin-right: $space;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+
+    &::before {
+        content: '';
+        background: color(base, 100);
+        height: 2px;
+        left: -$space - 3;
+        position: absolute;
+        right: -$space - 3;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: -1;
+    }
+
+    &__option {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        margin: 3px;
+        transition: .2s all;
+
+        &--active {
+            background: #FFF;
+            box-shadow: 0 0 5px 0 rgba(0,0,0,0.09), 
+                0 5px 8px 0 rgba(0,0,0,0.16), 
+                0 2px 2px 0 rgba(0,0,0,0.08);
+            border-radius: 13.5px;
+
+            &#{$el}__option--charge {
+                color: color(orange);
+
+                path {
+                    fill: color(orange);
+                }
+            } 
+            &#{$el}__option--cost-saving {
+                color: color(brand);
+                
+                path {
+                    fill: color(brand);
+                }
+            } 
+        }
+        
+    }
+
+    &__icon {
+        margin-right: $space-tiny;
+        path {
+            fill: color(base, 400);
+        }
+    }
+}
