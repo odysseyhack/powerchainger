@@ -33,15 +33,15 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   defmodule State do
-    defstruct [:navigation, :preferences, :users]
+    defstruct [:navigation, :preferences, :users, :current_user_id]
 
     @users %{
-      0 => %{name: "Alice", preferences: Preferences.new},
-      1 => %{name: "Batman", preferences: Preferences.new},
+      0 => %{name: "Alice"},
+      1 => %{name: "Batman"},
     }
 
     def new do
-      %__MODULE__{navigation: Navigation.new, preferences: Preferences.new, users: @users}
+      %__MODULE__{navigation: Navigation.new, preferences: Preferences.new, users: @users, current_user_id: nil}
     end
 
     def user_by_index(index) do
@@ -58,6 +58,10 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   @impl true
   def mount(_session, socket) do
     schedule()
+
+    if connected?(socket) do
+      :dets.open_file(Preferences, type: :set)
+    end
 
     {user_id, user} = EnergyTree.User.Server.inspect
 
@@ -86,7 +90,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
         {"change_page", page, socket} ->
           update_field(socket, :navigation, &Navigation.navigate_to(&1, String.to_existing_atom(page)))
         {"toggle_charging_mode", charging_mode, socket} ->
-          update_field(socket, :preferences, &Preferences.set_charging_mode(&1, String.to_existing_atom(charging_mode)))
+          update_preferences(socket, &Preferences.set_charging_mode(&1, String.to_existing_atom(charging_mode)))
     end
     IO.inspect(socket.assigns)
     {:noreply, socket}
@@ -96,8 +100,10 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     user = State.user_by_index(user_id)
     socket
     |> assign([
-      preferences: user.preferences,
-      navigation: socket.assigns.navigation |> Navigation.navigate_to(:dashboard)
+      preferences: load_preferences(user_id),
+      navigation: socket.assigns.navigation |> Navigation.navigate_to(:dashboard),
+      current_user_id: user_id
+
     ])
   end
 
@@ -105,7 +111,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     socket
     |> assign([
       preferences: nil,
-      navigation: Navigation.new()
+      navigation: Navigation.new(),
+      current_user_id: nil
     ])
   end
 
@@ -114,6 +121,22 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
       socket.assigns[field]
       |> fun.()
     assign(socket, [{field, new_val}])
+  end
+
+  defp update_preferences(socket, fun) do
+    socket = update_field(socket, :preferences, fun)
+    preferences = socket.assigns.preferences
+    user_id = socket.assigns.current_user_id
+    :dets.insert(Preferences, {user_id, preferences})
+
+    socket
+  end
+
+  defp load_preferences(user_id) do
+    case :dets.lookup(Preferences, user_id) do
+      [{^user_id, preferences}] -> preferences
+      [] -> Preferences.new
+    end
   end
 
   defp schedule() do
