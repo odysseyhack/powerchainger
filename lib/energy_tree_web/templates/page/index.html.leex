@@ -1,17 +1,17 @@
 <button phx-click="toggle_menu">Menu</button>
-<%= if @show_menu? do %>
+<%= if @navigation.show_menu? do %>
 Menu open
 <div>
   Car Info
 </div>
 
-<h2>Page: <%= @page %></h2>
+<h2>Page: <%= @navigation.page %></h2>
 
 <nav>
   <ul>
     <li phx-click="change_page" phx-value="dashboard">Dashboard</li>
     <li phx-click="change_page" phx-value="profile">Profile</li>
-    <li phx-click="change_page" phx-value="settings">Change Password</li>
+    <li phx-click="change_page" phx-value="settings">Settings</li>
     <li phx-click="change_page" phx-value="sign_out">Sign Out</li>
     <li>Forget My Car</li>
   </ul>
@@ -20,15 +20,15 @@ Menu open
 Menu closed
 <% end %>
 
-<%= if @page == :dashboard do %>
+<%= if @navigation.page == :dashboard do %>
 <div>Traffic Light</div>
 <div> Battery Indicator </div>
 <div> 30% </div>
 <div> 40 tokens </div>
 <div>
   <h3>Charging Mode</h3>
-  <button phx-click="toggle_charging_mode" phx-value="charging" <%= if @charging_mode == :charging do %>style="background-color: green;" <% end %> >Charge Mode</button>
-  <button phx-click="toggle_charging_mode" phx-value="saving" <%= if @charging_mode == :saving do %>style="background-color: green;" <% end %>>Saving Mode</button>
+  <button phx-click="toggle_charging_mode" phx-value="charging" <%= if @preferences.charging_mode == :charging do %>style="background-color: green;" <% end %> >Charge Mode</button>
+  <button phx-click="toggle_charging_mode" phx-value="saving" <%= if @preferences.charging_mode == :saving do %>style="background-color: green;" <% end %>>Saving Mode</button>
 </div>
 
 <% end %>
@@ -45,3 +45,4 @@ Current time: <%= @time %>
   <input name="q" placeholder="name" value="<%= @title %>" />
 </form>
 <% end %>
+

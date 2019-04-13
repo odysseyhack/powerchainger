@@ -1,10 +1,46 @@
 defmodule EnergyTreeWeb.EnergyTreeLiveView do
   use Phoenix.LiveView
 
-  defstruct page: :dashboard, user: EnergyTree.User.Struct.new, show_menu?: false
+  defmodule Navigation do
+    defstruct [:page, :show_menu?]
+    def new do
+      %__MODULE__{page: :dashboard, show_menu?: false}
+    end
 
-  @pages [:dashboard, :profile, :settings, :sign_out]
-  @charging_modes [:charging, :saving]
+    @pages [:dashboard, :profile, :settings, :sign_out]
+
+    def navigate_to(struct, page) when page in @pages do
+      %__MODULE__{struct | page: page}
+    end
+
+    def toggle_menu(struct) do
+      %__MODULE__{struct | show_menu?: !struct.show_menu?}
+    end
+  end
+
+  defmodule Preferences do
+    defstruct [:charging_mode, :user_name]
+
+    @charging_modes [:charging, :saving]
+
+    def new do
+      %__MODULE__{charging_mode: :charging, user_name: "Batman"}
+    end
+
+    def set_charging_mode(struct, mode) when mode in @charging_modes do
+      %__MODULE__{struct | charging_mode: mode}
+    end
+  end
+
+  # defstruct page: :dashboard, user: EnergyTree.User.Struct.new, show_menu?: false
+  defmodule State do
+    defstruct [:navigation, :preferences]
+
+    def new do
+      %__MODULE__{navigation: Navigation.new, preferences: Preferences.new}
+    end
+  end
+
 
   @impl true
   def render(assigns) do
@@ -18,14 +54,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     {user_id, user} = EnergyTree.User.Server.inspect
 
     socket = socket
-    |> assign([
-      show_menu?: false,
-      charging_mode: :charging,
-      page: :dashboard,
-      user: user,
-      time: NaiveDateTime.utc_now,
-      title: user.name || "Powerchainger"
-    ])
+    |> assign(State.new |> Map.from_struct)
 
     {:ok, socket}
   end
@@ -49,6 +78,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
         {"toggle_charging_mode", charging_mode, socket} ->
           toggle_charging_mode(socket, String.to_existing_atom(charging_mode))
     end
+    IO.inspect(socket.assigns)
     {:noreply, socket}
   end
 
@@ -63,18 +93,28 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   defp toggle_menu(socket) do
+    navigation =
+      socket.assigns.navigation
+      |> Navigation.toggle_menu()
     socket
-    |> assign(show_menu?: !socket.assigns.show_menu?)
+    |> assign(navigation: navigation)
   end
 
-  defp change_page(socket, page) when page in @pages do
+  defp change_page(socket, page) do
+    navigation =
+      socket.assigns.navigation
+      |> Navigation.navigate_to(page)
     socket
-    |> assign(page: page)
+    |> assign(navigation: navigation)
   end
 
-  defp toggle_charging_mode(socket, charging_mode) when charging_mode in @charging_modes do
+  defp toggle_charging_mode(socket, charging_mode) do
+    preferences =
+      socket.assigns.preferences
+      |> Preferences.set_charging_mode(charging_mode)
+
     socket
-    |> assign(charging_mode: charging_mode)
+    |> assign(preferences: preferences)
   end
 
   defp schedule() do
