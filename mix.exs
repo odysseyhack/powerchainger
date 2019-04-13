@@ -45,7 +45,8 @@ defmodule EnergyTree.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
       {:exactor, "~> 2.2.4"},
-      {:iota_ex, "~> 0.1.0"}
+      {:iota_ex, "~> 0.1.0"},
+      {:stream_data, "~> 0.1", only: :test}
     ]
   end
 
@@ -59,7 +60,7 @@ defmodule EnergyTree.MixProject do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["test"]
     ]
   end
 end

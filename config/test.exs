@@ -10,9 +10,9 @@ config :energy_tree, EnergyTreeWeb.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :energy_tree, EnergyTree.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "energy_tree_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+# config :energy_tree, EnergyTree.Repo,
+#   username: "postgres",
+#   password: "postgres",
+#   database: "energy_tree_test",
+#   hostname: "localhost",
+#   pool: Ecto.Adapters.SQL.Sandbox
