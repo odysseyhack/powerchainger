@@ -48,6 +48,42 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
     }
   end
 
+  @doc """
+  Updates the battery level based on the current state of the local energy grid.
+
+  This is a simulation, since the algorithm is simplified.
+  The intent of this simplification is to make it more demo-friendly (by e.g. speeding up the notion of time).
+
+  During 'green' times, we charge the battery:
+
+      iex> State.new().battery_level
+      42
+      iex> State.new |> Map.put(:traffic_light, :green) |> State.simulate_update_battery_level() |> Map.get(:battery_level)
+      43
+
+  During 'red' times, the battery is discharged, but you receive a token as reward.
+
+      iex> State.new |> Map.get(:battery_level)
+      42
+      iex> new_state = State.new |> Map.put(:traffic_light, :red) |> State.simulate_update_battery_level()
+      iex> new_state.battery_level
+      41
+      iex> new_state.token_count
+      1
+
+  During 'orange' times, the battery is left alone.
+
+  iex> State.new().battery_level
+  42
+  iex> State.new().token_count
+  0
+  iex> new_state = State.new |> Map.put(:traffic_light, :orange) |> State.simulate_update_battery_level()
+  iex> new_state.battery_level
+  42
+  iex> new_state.token_count
+  0
+
+  """
   def simulate_update_battery_level(state = %{traffic_light: :green}) do
     %__MODULE__{state | battery_level: state.battery_level + 1 }
   end
