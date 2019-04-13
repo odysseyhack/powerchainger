@@ -24,7 +24,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     @charging_modes [:charging, :saving]
 
     def new do
-      %__MODULE__{charging_mode: :charging, user_name: "Batman", saving_until: nil}
+      %__MODULE__{charging_mode: :charging, user_name: "Batman", saving_until: ~T[20:00:00]}
     end
 
     def set_charging_mode(struct, mode) when mode in @charging_modes do
@@ -32,7 +32,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     end
 
     def set_saving_until(struct, time) do
-      IO.inspect(time)
+      IO.inspect({struct, time})
       %__MODULE__{struct | saving_until: time}
     end
   end
@@ -68,8 +68,6 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
       :dets.open_file(Preferences, type: :set)
     end
 
-    {user_id, user} = EnergyTree.User.Server.inspect
-
     socket = socket
     |> assign(State.new |> Map.from_struct)
 
@@ -96,8 +94,9 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
           update_field(socket, :navigation, &Navigation.navigate_to(&1, String.to_existing_atom(page)))
         {"toggle_charging_mode", charging_mode, socket} ->
           update_preferences(socket, &Preferences.set_charging_mode(&1, String.to_existing_atom(charging_mode)))
-        {"change_saving_until", %{"time" => time}, socket} ->
-          update_preferences(socket, &Preferences.set_saving_until(&1, Time.from_iso8601!(time <> ":00")))
+        {"change_saving_until", %{"hours" => hours, "minutes" => minutes}, socket} ->
+          time = parse_time(hours, minutes)
+          update_preferences(socket, &Preferences.set_saving_until(&1, time))
     end
     IO.inspect(socket.assigns)
     {:noreply, socket}
@@ -148,5 +147,21 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
 
   defp schedule() do
     Process.send_after(self(), :tick, 1000)
+  end
+
+  defp parse_time(hours, minutes) do
+    hours =
+      "0" <> hours
+      |> String.to_integer
+      |> min(23)
+      |> max(0)
+
+    minutes =
+      "0" <> minutes
+      |> String.to_integer
+      |> min(59)
+      |> max(0)
+
+    Time.from_erl!({hours, minutes, 0})
   end
 end
