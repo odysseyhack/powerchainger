@@ -116,11 +116,13 @@
 @import "../node_modules/inuitcss/objects/objects.ratio";
 @import "../node_modules/inuitcss/objects/objects.crop";
 @import "../node_modules/inuitcss/objects/objects.table";
-@import "../node_modules/inuitcss/objects/objects.pack";
+// @import "../node_modules/inuitcss/objects/objects.pack";
+@import "objects/objects.wrapper";
 
 
 // COMPONENTS
-// @import "components/components.example";
+@import "components/components.price-indicator";
+@import "components/components.settings-toggle";
 
 
 // UTILITIES

@@ -1,0 +1,35 @@
+.c-price-indicator {
+    text-align: right;
+
+    &__label {
+        color: #fff;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: $space-tiny;
+    }
+    
+    &__icon {
+        color: #fff;
+        font-size: 1rem;
+        opacity: .7;
+        padding: $space-tiny;
+    }
+}
+
+.c-price-indicator::before,
+.c-price-indicator--green::before {
+    background-image: linear-gradient(180deg, #00DDB7 48%, #00B881 100%);
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 140vw;
+    position: absolute;
+    right: 0;
+    transform: translate(50%, -50%);
+    width: 140vw;
+    z-index: -1;
+}

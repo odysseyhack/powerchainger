@@ -1,6 +1,5 @@
-<a phx-click="toggle_menu">
+<a class="c-settings-toggle" phx-click="toggle_menu">
     <i class="bx bx-cog"></i>
-    Settings
 </a>
 <%= if @navigation.show_settings? do %>
 <div>
@@ -27,6 +26,7 @@
   </ul>
 </nav>
 <% end %>
+
 
 <div>Traffic Light</div>
 <div> Battery Indicator </div>

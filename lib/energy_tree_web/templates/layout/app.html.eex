@@ -11,17 +11,17 @@
   </head>
   <body>
     <header>
-      <section class="container">
+    <div class="c-price-indicator">
+        <span class="c-price-indicator__label">Energy price
+            <i class="c-price-indicator__icon  bx bx-like"></i>
+        </span>
+    </div>
+      <section class="o-wrapper">
         <nav role="navigation">
           <ul>
             <li></li>
           </ul>
         </nav>
-        <div class="logo bx bx-analyse">
-            <h1>
-                EnergyTree
-            </h1>
-        </div>
       </section>
     </header>
     <main role="main" class="container">

@@ -1,0 +1,15 @@
+// on smaller devices
+.o-wrapper {
+  @include mq($until: phablet) {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+  &--flush {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+}
