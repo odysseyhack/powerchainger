@@ -12,31 +12,11 @@
   <body>
     <div class="flex-wrapper">
         <div class="u-1/2">
-            <svg viewBox="0 0 36 36" class="c-circular-chart  c-circular-chart--green">
-                <path class="c-circular-chart__bg" d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="c-circular-chart__fill" stroke-dasharray="30, 100" d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <text x="18" y="18.35" class="c-circular-chart__percentage">30%</text>
-                <text x="18" y="24" class="c-circular-chart__label">battery</text>
-                <text x="18" y="27.3" class="c-circular-chart__sublabel  c-circular-chart__sublabel--orange">charging</text>
-            </svg>
+            <%= circle_chart("30 %", 50, "battery", "charging", ["c-circular-chart--green"], ["c-circular-chart__sublabel--orange"]) %>
         </div>
 
         <div class="u-1/2">
-            <svg viewBox="0 0 36 36" class="c-circular-chart  c-circular-chart--grey">
-                <path class="c-circular-chart__bg" d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <path class="c-circular-chart__fill" stroke-dasharray="50, 100" d="M18 2.0845
-                    a 15.9155 15.9155 0 0 1 0 31.831
-                    a 15.9155 15.9155 0 0 1 0 -31.831" />
-                <text x="18" y="18.35" class="c-circular-chart__percentage">29</text>
-                <text x="18" y="24" class="c-circular-chart__label">tokens</text>
-                <text x="18" y="27.3" class="c-circular-chart__sublabel">earned today</text>
-            </svg>
+            <%= circle_chart(40, 50, "tokens", "earned today", ["c-circular-chart--grey"], []) %>
         </div>
     </div>
     <main role="main" class="container">
