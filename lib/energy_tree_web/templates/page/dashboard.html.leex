@@ -25,6 +25,8 @@
   <button phx-click="toggle_charging_mode" phx-value="charging" <%= if @preferences.charging_mode == :charging do %>style="background-color: green;" <% end %> >Charge Mode</button>
   <button phx-click="toggle_charging_mode" phx-value="saving" <%= if @preferences.charging_mode == :saving do %>style="background-color: green;" <% end %>>Saving Mode</button>
   Your car is in saving mode until
-  <input name="" type="time" value=""/>.
+  <form phx-change="change_saving_until">
+  <input  name="time" type="time" value=""/>.
+  </form>
 </div>
 

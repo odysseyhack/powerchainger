@@ -19,16 +19,21 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   defmodule Preferences do
-    defstruct [:charging_mode, :user_name]
+    defstruct [:charging_mode, :user_name, :saving_until]
 
     @charging_modes [:charging, :saving]
 
     def new do
-      %__MODULE__{charging_mode: :charging, user_name: "Batman"}
+      %__MODULE__{charging_mode: :charging, user_name: "Batman", saving_until: nil}
     end
 
     def set_charging_mode(struct, mode) when mode in @charging_modes do
       %__MODULE__{struct | charging_mode: mode}
+    end
+
+    def set_saving_until(struct, time) do
+      IO.inspect(time)
+      %__MODULE__{struct | saving_until: time}
     end
   end
 
@@ -91,6 +96,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
           update_field(socket, :navigation, &Navigation.navigate_to(&1, String.to_existing_atom(page)))
         {"toggle_charging_mode", charging_mode, socket} ->
           update_preferences(socket, &Preferences.set_charging_mode(&1, String.to_existing_atom(charging_mode)))
+        {"change_saving_until", %{"time" => time}, socket} ->
+          update_preferences(socket, &Preferences.set_saving_until(&1, Time.from_iso8601!(time <> ":00")))
     end
     IO.inspect(socket.assigns)
     {:noreply, socket}

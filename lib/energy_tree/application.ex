@@ -12,7 +12,6 @@ defmodule EnergyTree.Application do
       # EnergyTree.Repo,
       # Start the endpoint when the application starts
       EnergyTreeWeb.Endpoint,
-      {EnergyTree.User.Server, "a"}
       # Starts a worker by calling: EnergyTree.Worker.start_link(arg)
       # {EnergyTree.Worker, arg},
     ]
