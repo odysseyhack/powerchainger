@@ -113,7 +113,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   defp schedule() do
-    Process.send_after(self(), :tick, 1000)
+    Process.send_after(self(), :tick, 100)
   end
 
   defp parse_time(hours, minutes) do
