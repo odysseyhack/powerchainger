@@ -1,7 +1,18 @@
 <button phx-click="toggle_menu">Menu</button>
 <%= if @show_menu? do %>
   Menu open
-<% else %>
+<div>
+  Car Info
+</div>
+
+<nav>
+  <ul>
+    <li>Profile</li>
+    <li>Change Password</li>
+    <li>Sign Out</li>
+    <li>Forget My Car</li>
+  </ul>
+</nav><% else %>
 Menu closed
 <% end %>
 <div>Traffic Light</div>
