@@ -78,6 +78,6 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   defp schedule() do
-    Process.send_after(self(), :tick, 100)
+    Process.send_after(self(), :tick, 1000)
   end
 end
