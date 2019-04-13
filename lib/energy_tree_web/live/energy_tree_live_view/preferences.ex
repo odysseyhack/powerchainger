@@ -30,10 +30,14 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
       iex> Preferences.new |> Preferences.set_charging_mode(:charging) |> Map.get(:charging_mode)
       :charging
       iex> Preferences.new |> Preferences.set_charging_mode(:i_do_not_exist) |> Map.get(:charging_mode)
-      ** (FunctionClauseError) no function clause matching in EnergyTreeWeb.EnergyTreeLiveView.Preferences.set_charging_mode/2
+      ** (ArgumentError) unsupported `mode`
+ 
   """
   def set_charging_mode(struct, mode) when mode in @charging_modes do
     %__MODULE__{struct | charging_mode: mode}
+  end
+  def set_charging_mode(struct, _mode) do
+    raise ArgumentError, "unsupported `mode`"
   end
 
   @doc """
@@ -56,13 +60,17 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
       80
 
       iex> Preferences.new |> Preferences.set_minimum_battery(-1) |> Map.get(:minimum_battery)
-      ** (FunctionClauseError) no function clause matching in EnergyTreeWeb.EnergyTreeLiveView.Preferences.set_minimum_battery/2
+      ** (ArgumentError) improper `minimum_battery` value
 
       iex> Preferences.new |> Preferences.set_minimum_battery(100) |> Map.get(:minimum_battery)
-      ** (FunctionClauseError) no function clause matching in EnergyTreeWeb.EnergyTreeLiveView.Preferences.set_minimum_battery/2
+      ** (ArgumentError) improper `minimum_battery` value
 
   """
   def set_minimum_battery(struct, minimum_battery) when minimum_battery in 0..99 do
     %__MODULE__{struct | minimum_battery: minimum_battery}
   end
+  def set_minimum_battery(struct, _minimum_battery) do
+    raise ArgumentError, "improper `minimum_battery` value"
+  end
+
 end

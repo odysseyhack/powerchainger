@@ -18,7 +18,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.PreferencesTest do
 
   property "Preferences minimum battery rejecs numbers outside the range 0..99" do
     check all level <- StreamData.integer(), level not in (0..99) do
-      assert_raise(FunctionClauseError, fn ->
+      assert_raise(ArgumentError, fn ->
         Preferences.new |> Preferences.set_minimum_battery(level)
       end)
     end
