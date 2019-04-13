@@ -1,3 +1,21 @@
+<button phx-click="toggle_menu">Settings</button>
+<%= if @navigation.show_settings? do %>
+<div>
+  Car Info
+</div>
+
+<h2>Page: <%= @navigation.page %></h2>
+
+<nav>
+  <ul>
+    <li phx-click="change_page" phx-value="profile">Profile</li>
+    <li phx-click="change_page" phx-value="settings">Change Password</li>
+    <li phx-click="change_page" phx-value="sign_out">Sign Out</li>
+    <li>Forget My Car</li>
+  </ul>
+</nav>
+<% end %>
+
 <div>Traffic Light</div>
 <div> Battery Indicator </div>
 <div> 30% </div>

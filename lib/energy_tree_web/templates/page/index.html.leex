@@ -1,21 +1,3 @@
-<button phx-click="toggle_menu">Menu</button>
-<%= if @navigation.show_menu? do %>
-<div>
-  Car Info
-</div>
-
-<h2>Page: <%= @navigation.page %></h2>
-
-<nav>
-  <ul>
-    <li phx-click="change_page" phx-value="dashboard">Dashboard</li>
-    <li phx-click="change_page" phx-value="profile">Profile</li>
-    <li phx-click="change_page" phx-value="settings">Settings</li>
-    <li phx-click="change_page" phx-value="sign_out">Sign Out</li>
-    <li>Forget My Car</li>
-  </ul>
-</nav>
-<% end %>
 
 <%= if @navigation.page == :dashboard do %>
   <%= render "dashboard.html", assigns %>

@@ -2,9 +2,9 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   use Phoenix.LiveView
 
   defmodule Navigation do
-    defstruct [:page, :show_menu?]
+    defstruct [:page, :show_settings?]
     def new do
-      %__MODULE__{page: :dashboard, show_menu?: false}
+      %__MODULE__{page: :dashboard, show_settings?: false}
     end
 
     @pages [:dashboard, :tokens, :profile, :settings, :sign_out]
@@ -14,7 +14,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     end
 
     def toggle_menu(struct) do
-      %__MODULE__{struct | show_menu?: !struct.show_menu?}
+      %__MODULE__{struct | show_settings?: !struct.show_settings?}
     end
   end
 
@@ -32,7 +32,6 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     end
   end
 
-  # defstruct page: :dashboard, user: EnergyTree.User.Struct.new, show_menu?: false
   defmodule State do
     defstruct [:navigation, :preferences]
 
