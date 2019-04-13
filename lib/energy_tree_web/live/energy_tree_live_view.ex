@@ -20,6 +20,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     socket = socket
     |> assign([
       show_menu?: false,
+      charging_mode: :charging,
       page: :dashboard,
       user: user,
       time: NaiveDateTime.utc_now,

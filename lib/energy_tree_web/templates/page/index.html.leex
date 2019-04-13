@@ -24,8 +24,8 @@ Menu closed
 <div> 40 tokens </div>
 <div>
     <h3>Charging Mode</h3>
-    <button phx-click="toggle_charge_mode" phx-value="charging">Charge Mode</button>
-    <button phx-click="toggle_charge_mode" phx-value="saving">Saving Mode</button>
+    <button phx-click="toggle_charging_mode" phx-value="charging" <%= if @charging_mode == :charging do %>style="background-color: green;" <% end %> >Charge Mode</button>
+    <button phx-click="toggle_charging_mode" phx-value="saving" <%= if @charging_mode == :saving do %>style="background-color: green;" <% end %>>Saving Mode</button>
 </div>
 <h1><%= @user.name %>
 </h1>
