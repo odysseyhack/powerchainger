@@ -49,7 +49,7 @@ config :energy_tree, EnergyTreeWeb.Endpoint,
 config :energy_tree, EnergyTreeWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/static/.*(js|css|scss|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/energy_tree_web/{live,views}/.*(ex)$",
       ~r"lib/energy_tree_web/templates/.*(eex)$"
