@@ -11,10 +11,10 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Navigation do
 
   Will raise on paths that do not exist.
 
-  iex> Navigation.new() |> navigate_to(:tokens)
+  iex> Navigation.new() |> Navigation.navigate_to(:tokens)
   %Navigation{page: :tokens, show_settings?: false}
 
-  iex> Navigation.new() |> navigate_to(:unexistent)
+  iex> Navigation.new() |> Navigation.navigate_to(:unexistent)
   *** ArgumentError
   """
   def navigate_to(struct, page) when page in @pages do

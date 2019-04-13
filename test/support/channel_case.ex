@@ -26,10 +26,10 @@ defmodule EnergyTreeWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(EnergyTree.Repo)
+    # :ok = Ecto.Adapters.SQL.Sandbox.checkout(EnergyTree.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(EnergyTree.Repo, {:shared, self()})
+      # Ecto.Adapters.SQL.Sandbox.mode(EnergyTree.Repo, {:shared, self()})
     end
 
     :ok
