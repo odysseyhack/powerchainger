@@ -51,23 +51,15 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   defp sign_in(socket, user_id) do
-    user = State.user_by_index(user_id)
-    socket
-    |> assign([
-      preferences: load_preferences(user_id),
-      navigation: socket.assigns.navigation |> Navigation.navigate_to(:dashboard),
-      current_user_id: user_id
+    preferences = load_preferences(user_id)
 
-    ])
+    socket
+    |> update_state(&State.sign_in(&1, user_id, preferences))
   end
 
   defp sign_out(socket) do
     socket
-    |> assign([
-      preferences: nil,
-      navigation: Navigation.new(),
-      current_user_id: nil
-    ])
+    |> update_state(&State.sign_out(&1))
   end
 
   defp update_field(socket, field, fun) do
@@ -84,6 +76,14 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     :dets.insert(Preferences, {user_id, preferences})
 
     socket
+  end
+
+  defp update_state(socket, fun) do
+    new_state = struct(State, socket.assigns)
+    |> fun.()
+    |> Map.from_struct
+
+    assign(socket, new_state)
   end
 
   defp load_preferences(user_id) do

@@ -15,4 +15,20 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
   def user_by_index(index) do
     @users[index]
   end
+
+  def sign_in(state, user_id, preferences) do
+    %__MODULE__{ state |
+      navigation: state.navigation |> Navigation.navigate_to(:dashboard),
+      preferences: preferences,
+      current_user_id: user_id
+    }
+  end
+
+  def sign_out(state) do
+    %__MODULE__{state |
+                navigation: Navigation.new(),
+                preferences: nil,
+                current_user_id: nil
+    }
+  end
 end
