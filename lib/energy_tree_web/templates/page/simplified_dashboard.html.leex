@@ -1,0 +1,31 @@
+<a class="c-settings-toggle" phx-click="toggle_menu">
+    <i class="bx bx-cog"></i>
+</a>
+<%= if @navigation.show_settings? do %>
+    <div class="c-car-info">
+        No EV
+    </div>
+
+    <h2>Page: <%= @navigation.page %></h2>
+
+    <nav>
+    <ul>
+        <li phx-click="change_page" phx-value="profile">Profile</li>
+        <li phx-click="change_page" phx-value="settings">Change Password</li>
+        <li phx-click="sign_out">Sign Out</li>
+    </ul>
+    </nav>
+<% end %>
+
+<div class="c-car-visualization">
+    <img class="c-car-visualization__img" src="images/car.png" alt="Renault Zoe">
+</div>
+
+<div>Traffic Light</div>
+<div>Traffic Light: <%= @traffic_light %></div>
+
+<div phx-click="change_page" phx-value="tokens" > <%= @token_count %> tokens </div>
+<div>
+  <h3>Simplified mode</h3>
+</div>
+

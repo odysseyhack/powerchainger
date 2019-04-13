@@ -1,16 +1,14 @@
 <%= if @navigation.page == :signed_out do %>
   <%= render "choose_user.html", assigns %>
-  <% else %>
-    <%= if @preferences.has_ev? do %>
-      <%= if @navigation.page == :dashboard do %>
-        <%= render "dashboard.html", assigns %>
-      <% end %>
-      <%= if @navigation.page == :tokens do %>
-        <%= render "tokens.html", assigns %>
-      <% end %>
-    <% else %>
-      <strong>
-        No EV. Show simplified page instead.
-      </strong>
-    <% end %>
+<% end %>
+<%= if @preferences && @preferences.has_ev? do %>
+  <%= if @navigation.page == :dashboard do %>
+    <%= render "dashboard.html", assigns %>
+  <% end %>
+  <%= if @navigation.page == :tokens do %>
+    <%= render "tokens.html", assigns %>
+  <% end %>
+<% end %>
+<%= if @preferences && !@preferences.has_ev? do %>
+  <%= render "simplified_dashboard.html", assigns %>
 <% end %>
