@@ -10,12 +10,11 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
 
   @impl true
   def mount(_session, socket) do
-    schedule()
 
     if connected?(socket) do
-      :dets.open_file(Preferences, type: :set)
-
       EnergyTreeWeb.Endpoint.subscribe("energy")
+      schedule()
+      :dets.open_file(Preferences, type: :set)
     end
 
     socket = socket
@@ -27,11 +26,22 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   @impl true
   def handle_info(:tick, socket) do
     schedule()
+
+    socket = socket
+    |> update_state(&State.simulate_update_battery_level(&1))
+
     {:noreply, assign(socket, time: NaiveDateTime.utc_now)}
   end
 
-  def handle_info(%Phoenix.Socket.Broadcast{topic: "energy", event: "load_change", payload: %{load: new_load}}, socket) do
-    IO.inspect(new_load, label: "Load change!")
+  def handle_info(%Phoenix.Socket.Broadcast{topic: "energy", event: "load_change", payload: %{load: load}}, socket) do
+    socket = cond do
+      load <= 0.33 ->
+        assign(socket, traffic_light: :green)
+      load <= 0.66 ->
+        assign(socket, traffic_light: :orange)
+      true ->
+        assign(socket, traffic_light: :red)
+    end
     {:noreply, socket}
   end
 

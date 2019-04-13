@@ -10,7 +10,7 @@ defmodule EnergyTree.Dispatcher do
     reschedule()
 
     millisec = :erlang.system_time / 100_000_000
-    load = (:math.cos(:math.pi*2*(0.002) * millisec) * :math.cos(:math.pi*2*(0.013) * millisec) + 1) / 2
+    load = (:math.cos(:math.pi*2*(0.001) * millisec) * :math.cos(:math.pi*2*(0.007) * millisec) + 1) / 2
 
     EnergyTreeWeb.Endpoint.broadcast!("energy", "load_change", %{load: load})
     new_state(%{load: load})
