@@ -28,6 +28,18 @@ module.exports = (env, options) => ({
           loader: 'babel-loader'
         }
       },
+      // Font files
+        {
+            test: /\.(svg|eot|woff|woff2|ttf|otf)$/,
+            loader: 'file-loader',
+            include: [/fonts/],
+
+            options: {
+                name: '[hash].[ext]',
+                outputPath: 'css/',
+                publicPath: url => '../css/' + url
+            }
+      },
       {
         test: /\.scss$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
