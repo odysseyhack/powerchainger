@@ -44,7 +44,9 @@
 <div>Traffic Light: <%= @traffic_light %></div>
 
 <div> Battery Indicator </div>
-<div> <%= @battery_level %>% </div>
+<div>
+  <%= circle_chart("#{@battery_level}%", @battery_level, "battery", "charging", ["c-circular-chart--green"], ["c-circular-chart__sublabel--orange"]) %>
+</div>
 <div phx-click="change_page" phx-value="tokens" > <%= @token_count %> tokens </div>
 <div>
     <div class="c-mode-toggle">

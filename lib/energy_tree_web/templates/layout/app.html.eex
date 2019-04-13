@@ -12,7 +12,7 @@
   <body>
     <div class="flex-wrapper">
         <div class="u-1/2">
-            <%= circle_chart("30 %", 50, "battery", "charging", ["c-circular-chart--green"], ["c-circular-chart__sublabel--orange"]) %>
+            <%= circle_chart("30%", 50, "battery", "charging", ["c-circular-chart--green"], ["c-circular-chart__sublabel--orange"]) %>
         </div>
 
         <div class="u-1/2">
