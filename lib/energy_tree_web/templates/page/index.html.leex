@@ -32,6 +32,7 @@ Menu closed
 </div>
 
 <% end %>
+<% if false do %>
 <h1><%= @user.name %>
 </h1>
 <h2>
@@ -43,3 +44,4 @@ Current time: <%= @time %>
 <form phx-change="changed_name" >
   <input name="q" placeholder="name" value="<%= @title %>" />
 </form>
+<% end %>
