@@ -1,59 +1,7 @@
 defmodule EnergyTreeWeb.EnergyTreeLiveView do
   use Phoenix.LiveView
 
-  defmodule Navigation do
-    defstruct [:page, :show_settings?]
-    def new do
-      %__MODULE__{page: :signed_out, show_settings?: false}
-    end
-
-    @pages [:dashboard, :tokens, :profile, :settings, :signed_out]
-
-    def navigate_to(struct, page) when page in @pages do
-      %__MODULE__{struct | page: page}
-    end
-
-    def toggle_menu(struct) do
-      %__MODULE__{struct | show_settings?: !struct.show_settings?}
-    end
-  end
-
-  defmodule Preferences do
-    defstruct [:charging_mode, :user_name, :saving_until]
-
-    @charging_modes [:charging, :saving]
-
-    def new do
-      %__MODULE__{charging_mode: :charging, user_name: "Batman", saving_until: ~T[20:00:00]}
-    end
-
-    def set_charging_mode(struct, mode) when mode in @charging_modes do
-      %__MODULE__{struct | charging_mode: mode}
-    end
-
-    def set_saving_until(struct, time) do
-      IO.inspect({struct, time})
-      %__MODULE__{struct | saving_until: time}
-    end
-  end
-
-  defmodule State do
-    defstruct [:navigation, :preferences, :users, :current_user_id]
-
-    @users %{
-      0 => %{name: "Alice"},
-      1 => %{name: "Batman"},
-    }
-
-    def new do
-      %__MODULE__{navigation: Navigation.new, preferences: Preferences.new, users: @users, current_user_id: nil}
-    end
-
-    def user_by_index(index) do
-      @users[index]
-    end
-  end
-
+  alias EnergyTreeWeb.EnergyTreeLiveView.{Navigation, Preferences, State}
 
   @impl true
   def render(assigns) do
