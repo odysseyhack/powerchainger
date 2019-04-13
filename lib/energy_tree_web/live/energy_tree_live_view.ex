@@ -1,32 +1,11 @@
 defmodule EnergyTreeWeb.EnergyTreeLiveView do
   use Phoenix.LiveView
 
-  defstruct page: :dashboard, user: EnergyTree.User.Struct.new
+  defstruct page: :dashboard, user: EnergyTree.User.Struct.new, show_menu?: false
 
   @impl true
   def render(assigns) do
-
     EnergyTreeWeb.PageView.render("index.html", assigns)
-
-    # ~L"""
-    # <button>Menu</button>
-    # <div>Traffic Light</div>
-    # <div> Battery Indicator </div>
-    # <div> 30% </div>
-    # <div> 40 tokens </div>
-    # <div Charging Mode </div>
-
-    # <h1> <%= @user.name %></h1>
-    # Current time: <%= @time %>
-
-    # <form phx-change="changed_name" >
-    #   <input name="q" placeholder="name" value="<%= @title %>" />
-    # </form>
-
-    # <h2>
-    # In Trytes: <%= trytes %>
-    # </h2>
-    # """
   end
 
   @impl true
@@ -34,7 +13,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     schedule()
 
     {user_id, user} = EnergyTree.User.Server.inspect
-    {:ok, assign(socket, user: user, time: NaiveDateTime.utc_now, title: user.name || "Powerchainger")}
+    {:ok, assign(socket, show_menu?: false, user: user, time: NaiveDateTime.utc_now, title: user.name || "Powerchainger")}
   end
 
   @impl true
@@ -44,13 +23,21 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   @impl true
-  def handle_event("changed_name", %{"q" => new_name}, socket) do
-    {user_id, user} = EnergyTree.User.Server.inspect
-    user = user
-    |> Map.put(:name, new_name)
+  def handle_event(event, value, socket) do
+    case {event, value, socket} do
+      {"changed_name", %{"q" => new_name}, socket} ->
+        {user_id, user} = EnergyTree.User.Server.inspect
+        user = user
+          |> Map.put(:name, new_name)
 
-    EnergyTree.User.Server.set(user)
-    {:noreply, assign(socket, title: new_name, user: user)}
+        EnergyTree.User.Server.set(user)
+        socket = assign(socket, title: new_name, user: user)
+        {:noreply, socket}
+      {"toggle_menu", _, socket} ->
+        IO.inspect("Toggled menu!")
+        socket = assign(socket, show_menu?: !socket.assigns.show_menu?)
+        {:noreply, socket}
+    end
   end
 
   defp schedule() do

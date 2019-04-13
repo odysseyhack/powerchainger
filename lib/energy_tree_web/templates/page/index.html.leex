@@ -1,4 +1,9 @@
-<button>Menu</button>
+<button phx-click="toggle_menu">Menu</button>
+<%= if @show_menu? do %>
+  Menu open
+<% else %>
+Menu closed
+<% end %>
 <div>Traffic Light</div>
 <div> Battery Indicator </div>
 <div> 30% </div>
