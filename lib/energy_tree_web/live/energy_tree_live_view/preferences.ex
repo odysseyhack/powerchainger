@@ -1,8 +1,17 @@
 defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
+  @moduledoc """
+  The preferences struct is used to store user preferences
+  that are meant to persist to disk.
+
+  (and in the future to IPFS and/or IOTA)
+  """
   defstruct [:charging_mode, :user_name, :saving_until, :minimum_battery]
 
   @charging_modes [:charging, :saving]
 
+  @doc """
+  Initializes the Preference struct with some logical defaults.
+  """
   def new do
     %__MODULE__{charging_mode: :charging,
                 user_name: "Batman",
@@ -11,6 +20,18 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
     }
   end
 
+  @doc """
+  Changes the charging mode of the user's EV.
+
+  Raises unless a supported mode is used.
+
+  iex> Preferences.new |> Preferences.set_charging_mode(:saving) |> Map.get(:charging_mode)
+  :saving
+  iex> Preferences.new |> Preferences.set_charging_mode(:charging) |> Map.get(:charging_mode)
+  :charging
+  iex> Preferences.new |> Preferences.set_charging_mode(:i_do_not_exist) |> Map.get(:charging_mode)
+  ** (FunctionClauseError) no function clause matching in EnergyTreeWeb.EnergyTreeLiveView.Preferences.set_charging_mode/2
+  """
   def set_charging_mode(struct, mode) when mode in @charging_modes do
     %__MODULE__{struct | charging_mode: mode}
   end

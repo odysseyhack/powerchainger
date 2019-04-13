@@ -3,4 +3,6 @@ defmodule EnergyTreeWeb.EnergyTreeLiveViewTest do
   alias EnergyTreeWeb.EnergyTreeLiveView.{Navigation, Preferences, State}
 
   doctest Navigation
+  doctest Preferences
+  doctest State
 end
