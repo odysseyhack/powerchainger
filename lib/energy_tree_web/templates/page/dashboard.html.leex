@@ -9,6 +9,15 @@
 <nav>
   <ul>
     <li phx-click="change_page" phx-value="profile">Profile</li>
+    <li>In cost-saving mode, keep my battery above
+      <form phx-change="change_minimum_battery">
+      <select name="minimum_battery_amount">
+        <%= for percentage <- (0..95), Integer.mod(percentage, 5) == 0 do %>
+          <option <%= if @preferences.minimum_battery == percentage, do: "selected" %> value="<%= percentage %>"><%= percentage %> %</option>
+        <% end %>
+      </select>
+      </form>
+    </li>
     <li phx-click="change_page" phx-value="settings">Change Password</li>
     <li phx-click="sign_out">Sign Out</li>
     <li>Forget My Car</li>

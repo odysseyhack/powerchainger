@@ -45,6 +45,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
         {"change_saving_until", %{"hours" => hours, "minutes" => minutes}, socket} ->
           time = parse_time(hours, minutes)
           update_preferences(socket, &Preferences.set_saving_until(&1, time))
+        {"change_minimum_battery", %{"minimum_battery_amount" => minimum_battery_amount}, socket} ->
+          update_preferences(socket, &Preferences.set_minimum_battery(&1, String.to_integer(minimum_battery_amount)))
     end
     IO.inspect(socket.assigns)
     {:noreply, socket}
