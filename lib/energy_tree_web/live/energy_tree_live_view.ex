@@ -4,10 +4,10 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   defmodule Navigation do
     defstruct [:page, :show_settings?]
     def new do
-      %__MODULE__{page: :dashboard, show_settings?: false}
+      %__MODULE__{page: :signed_out, show_settings?: false}
     end
 
-    @pages [:dashboard, :tokens, :profile, :settings, :sign_out]
+    @pages [:dashboard, :tokens, :profile, :settings, :signed_out]
 
     def navigate_to(struct, page) when page in @pages do
       %__MODULE__{struct | page: page}
@@ -33,10 +33,19 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   defmodule State do
-    defstruct [:navigation, :preferences]
+    defstruct [:navigation, :preferences, :users]
+
+    @users %{
+      0 => %{name: "Alice", preferences: Preferences.new},
+      1 => %{name: "Batman", preferences: Preferences.new},
+    }
 
     def new do
-      %__MODULE__{navigation: Navigation.new, preferences: Preferences.new}
+      %__MODULE__{navigation: Navigation.new, preferences: Preferences.new, users: @users}
+    end
+
+    def user_by_index(index) do
+      @users[index]
     end
   end
 
@@ -68,8 +77,10 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   def handle_event(event, value, socket) do
     socket =
       case {event, value, socket} do
-        {"changed_name", %{"q" => new_name}, socket} ->
-          change_name(socket, new_name)
+        {"sign_in", user_id, socket} ->
+          sign_in(socket, String.to_integer(user_id))
+        {"sign_out", _, socket} ->
+          sign_out(socket)
         {"toggle_menu", _, socket} ->
           update_field(socket, :navigation, &Navigation.toggle_menu(&1))
         {"change_page", page, socket} ->
@@ -81,14 +92,21 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     {:noreply, socket}
   end
 
-  defp change_name(socket, new_name) do
-    {user_id, user} = EnergyTree.User.Server.inspect
-    user =
-      user
-      |> Map.put(:name, new_name)
+  defp sign_in(socket, user_id) do
+    user = State.user_by_index(user_id)
+    socket
+    |> assign([
+      preferences: user.preferences,
+      navigation: socket.assigns.navigation |> Navigation.navigate_to(:dashboard)
+    ])
+  end
 
-    EnergyTree.User.Server.set(user)
-    assign(socket, title: new_name, user: user)
+  defp sign_out(socket) do
+    socket
+    |> assign([
+      preferences: nil,
+      navigation: Navigation.new()
+    ])
   end
 
   defp update_field(socket, field, fun) do

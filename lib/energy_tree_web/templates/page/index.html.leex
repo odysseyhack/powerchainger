@@ -1,22 +1,9 @@
-
+<%= if @navigation.page == :signed_out do %>
+  <%= render "choose_user.html", assigns %>
+<% end %>
 <%= if @navigation.page == :dashboard do %>
   <%= render "dashboard.html", assigns %>
 <% end %>
 <%= if @navigation.page == :tokens do %>
   <%= render "tokens.html", assigns %>
 <% end %>
-
-<%= if false do %>
-<h1><%= @user.name %>
-</h1>
-<h2>
-  In Trytes: <%= to_trytes(@title) %>
-</h2>
-
-Current time: <%= @time %>
-
-<form phx-change="changed_name" >
-  <input name="q" placeholder="name" value="<%= @title %>" />
-</form>
-<% end %>
-
