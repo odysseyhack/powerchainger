@@ -6,6 +6,17 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Navigation do
 
   @pages [:dashboard, :tokens, :profile, :settings, :signed_out]
 
+  @doc """
+  Moving to a different page.
+
+  Will raise on paths that do not exist.
+
+  iex> Navigation.new() |> navigate_to(:tokens)
+  %Navigation{page: :tokens, show_settings?: false}
+
+  iex> Navigation.new() |> navigate_to(:unexistent)
+  *** ArgumentError
+  """
   def navigate_to(struct, page) when page in @pages do
     %__MODULE__{struct | page: page}
   end
