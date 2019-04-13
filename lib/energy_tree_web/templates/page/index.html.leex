@@ -1,18 +1,21 @@
 <button phx-click="toggle_menu">Menu</button>
 <%= if @show_menu? do %>
-  Menu open
+Menu open
 <div>
-  Car Info
+    Car Info
 </div>
 
+<h2>Page: <%= @page %></h2>
+
 <nav>
-  <ul>
-    <li>Profile</li>
-    <li>Change Password</li>
-    <li>Sign Out</li>
-    <li>Forget My Car</li>
-  </ul>
-</nav><% else %>
+    <ul>
+        <li phx-click="change_page" phx-value="profile">Profile</li>
+        <li phx-click="change_page" phx-value="settings">Change Password</li>
+        <li phx-click="change_page" phx-value="sign_out">Sign Out</li>
+        <li>Forget My Car</li>
+    </ul>
+</nav>
+<% else %>
 Menu closed
 <% end %>
 <div>Traffic Light</div>
@@ -20,14 +23,14 @@ Menu closed
 <div> 30% </div>
 <div> 40 tokens </div>
 <div Charging Mode </div>
-<h1> <%= @user.name %>
+<h1><%= @user.name %>
 </h1>
 Current time: <%= @time %>
 
 <form phx-change="changed_name" >
-<input name="q" placeholder="name" value="<%= @title %>" />
+    <input name="q" placeholder="name" value="<%= @title %>" />
 </form>
 
 <h2>
-In Trytes: <%= to_trytes(@title) %>
+    In Trytes: <%= to_trytes(@title) %>
 </h2>

@@ -3,6 +3,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
 
   defstruct page: :dashboard, user: EnergyTree.User.Struct.new, show_menu?: false
 
+  @pages [:dashboard, :profile, :settings, :sign_out]
+
   @impl true
   def render(assigns) do
     EnergyTreeWeb.PageView.render("index.html", assigns)
@@ -17,6 +19,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     socket = socket
     |> assign([
       show_menu?: false,
+      page: :dashboard,
       user: user,
       time: NaiveDateTime.utc_now,
       title: user.name || "Powerchainger"
@@ -46,6 +49,14 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
         IO.inspect("Toggled menu!")
         socket = assign(socket, show_menu?: !socket.assigns.show_menu?)
         {:noreply, socket}
+      {"change_page", page, socket} ->
+        page = String.to_existing_atom(page)
+        if page in @pages do
+          socket = assign(socket, page: page)
+          {:noreply, socket}
+        else
+          {:noreply, socket}
+        end
     end
   end
 
