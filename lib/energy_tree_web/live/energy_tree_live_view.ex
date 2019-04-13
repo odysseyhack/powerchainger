@@ -13,7 +13,16 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     schedule()
 
     {user_id, user} = EnergyTree.User.Server.inspect
-    {:ok, assign(socket, show_menu?: false, user: user, time: NaiveDateTime.utc_now, title: user.name || "Powerchainger")}
+
+    socket = socket
+    |> assign([
+      show_menu?: false,
+      user: user,
+      time: NaiveDateTime.utc_now,
+      title: user.name || "Powerchainger"
+    ])
+
+    {:ok, socket}
   end
 
   @impl true
