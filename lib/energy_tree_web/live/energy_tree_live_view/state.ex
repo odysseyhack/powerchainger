@@ -1,11 +1,19 @@
 defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
-  defstruct [:navigation, :preferences, :users, :current_user_id, :token_history, :energy_usage, :traffic_light, :battery_level, token_count: 0]
+  @moduledoc """
+  This module manages the state inside the application.
+
+  By handling state changes in a normalized but 'stateless' fashion,
+  we enable code that is easy to test and refactor.
+  """
+
+  defstruct [:navigation, :preferences, :users, :current_user_id, :token_history, :energy_usage, :traffic_light, :battery_level, :token_count]
 
   alias EnergyTreeWeb.EnergyTreeLiveView.{Navigation, Preferences}
 
   @users %{
-    0 => %{name: "Alice"},
+    0 => %{name: "Fortunate Alice"},
     1 => %{name: "Batman"},
+    2 => %{name: "Poor Joe"},
   }
 
   def new do
@@ -25,6 +33,9 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
     @users[index]
   end
 
+  @doc """
+  Signing in a user.
+  """
   def sign_in(state, user_id, preferences) do
     %__MODULE__{ state |
                  navigation: state.navigation |> Navigation.navigate_to(:dashboard),
@@ -36,6 +47,11 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
     }
   end
 
+  @doc """
+  WHen signing out a user, we reset the state to a simple default.
+
+  Do note that we do not throw away all state (which a call to `new/0` would do).
+  """
   def sign_out(state) do
     %__MODULE__{state |
                 navigation: Navigation.new(),
@@ -73,15 +89,15 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
 
   During 'orange' times, the battery is left alone.
 
-  iex> State.new().battery_level
-  42
-  iex> State.new().token_count
-  0
-  iex> new_state = State.new |> Map.put(:traffic_light, :orange) |> State.simulate_update_battery_level()
-  iex> new_state.battery_level
-  42
-  iex> new_state.token_count
-  0
+      iex> State.new().battery_level
+      42
+      iex> State.new().token_count
+      0
+      iex> new_state = State.new |> Map.put(:traffic_light, :orange) |> State.simulate_update_battery_level()
+      iex> new_state.battery_level
+      42
+      iex> new_state.token_count
+      0
 
   """
   def simulate_update_battery_level(state = %{traffic_light: :green}) do
