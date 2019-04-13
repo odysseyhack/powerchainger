@@ -72,11 +72,11 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
         {"changed_name", %{"q" => new_name}, socket} ->
           change_name(socket, new_name)
         {"toggle_menu", _, socket} ->
-          toggle_menu(socket)
+          update_field(socket, :navigation, &Navigation.toggle_menu(&1))
         {"change_page", page, socket} ->
-          change_page(socket, String.to_existing_atom(page))
+          update_field(socket, :navigation, &Navigation.navigate_to(&1, String.to_existing_atom(page)))
         {"toggle_charging_mode", charging_mode, socket} ->
-          toggle_charging_mode(socket, String.to_existing_atom(charging_mode))
+          update_field(socket, :preferences, &Preferences.set_charging_mode(&1, String.to_existing_atom(charging_mode)))
     end
     IO.inspect(socket.assigns)
     {:noreply, socket}
@@ -92,29 +92,11 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
     assign(socket, title: new_name, user: user)
   end
 
-  defp toggle_menu(socket) do
-    navigation =
-      socket.assigns.navigation
-      |> Navigation.toggle_menu()
-    socket
-    |> assign(navigation: navigation)
-  end
-
-  defp change_page(socket, page) do
-    navigation =
-      socket.assigns.navigation
-      |> Navigation.navigate_to(page)
-    socket
-    |> assign(navigation: navigation)
-  end
-
-  defp toggle_charging_mode(socket, charging_mode) do
-    preferences =
-      socket.assigns.preferences
-      |> Preferences.set_charging_mode(charging_mode)
-
-    socket
-    |> assign(preferences: preferences)
+  defp update_field(socket, field, fun) do
+    new_val =
+      socket.assigns[field]
+      |> fun.()
+    assign(socket, [{field, new_val}])
   end
 
   defp schedule() do
