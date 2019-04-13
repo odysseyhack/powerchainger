@@ -2,31 +2,35 @@
     <i class="bx bx-cog"></i>
 </a>
 <%= if @navigation.show_settings? do %>
-<div>
-  Car Info
-</div>
+    <div class="c-car-info">
+        <img class="c-car-info__logo" src="images/logo-renault.png" alt="Renault Zoe">
+        Renault Zoe
+    </div>
 
-<h2>Page: <%= @navigation.page %></h2>
+    <h2>Page: <%= @navigation.page %></h2>
 
-<nav>
-  <ul>
-    <li phx-click="change_page" phx-value="profile">Profile</li>
-    <li>In cost-saving mode, keep my battery above
-      <form phx-change="change_minimum_battery">
-      <select name="minimum_battery_amount">
-        <%= for percentage <- (0..95), Integer.mod(percentage, 5) == 0 do %>
-          <option <%= if @preferences.minimum_battery == percentage, do: "selected" %> value="<%= percentage %>"><%= percentage %> %</option>
-        <% end %>
-      </select>
-      </form>
-    </li>
-    <li phx-click="change_page" phx-value="settings">Change Password</li>
-    <li phx-click="sign_out">Sign Out</li>
-    <li>Forget My Car</li>
-  </ul>
-</nav>
+    <nav>
+    <ul>
+        <li phx-click="change_page" phx-value="profile">Profile</li>
+        <li>In cost-saving mode, keep my battery above
+        <form phx-change="change_minimum_battery">
+        <select name="minimum_battery_amount">
+            <%= for percentage <- (0..95), Integer.mod(percentage, 5) == 0 do %>
+            <option <%= if @preferences.minimum_battery == percentage, do: "selected" %> value="<%= percentage %>"><%= percentage %> %</option>
+            <% end %>
+        </select>
+        </form>
+        </li>
+        <li phx-click="change_page" phx-value="settings">Change Password</li>
+        <li phx-click="sign_out">Sign Out</li>
+        <li>Forget My Car</li>
+    </ul>
+    </nav>
 <% end %>
 
+<div class="c-car-visualization">
+    <img class="c-car-visualization__img" src="images/car.png" alt="Renault Zoe">
+</div>
 
 <div>Traffic Light</div>
 <div> Battery Indicator </div>
