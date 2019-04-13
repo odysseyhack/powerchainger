@@ -14,6 +14,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
 
     if connected?(socket) do
       :dets.open_file(Preferences, type: :set)
+
+      EnergyTreeWeb.Endpoint.subscribe("energy")
     end
 
     socket = socket
@@ -26,6 +28,11 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   def handle_info(:tick, socket) do
     schedule()
     {:noreply, assign(socket, time: NaiveDateTime.utc_now)}
+  end
+
+  def handle_info(%Phoenix.Socket.Broadcast{topic: "energy", event: "load_change", payload: %{load: new_load}}, socket) do
+    IO.inspect(new_load, label: "Load change!")
+    {:noreply, socket}
   end
 
   @impl true

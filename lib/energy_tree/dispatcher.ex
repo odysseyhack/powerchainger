@@ -1,18 +1,22 @@
 defmodule EnergyTree.Dispatcher do
   use ExActor.GenServer, export: __MODULE__
 
-  defstart start_link do
-    Process.send_after(self(), :update_load, 1000)
-    initial_state(%{load: 42})
+  defstart start_link(_) do
+    reschedule()
+    initial_state(%{load: 0.5})
   end
 
   defhandleinfo :update_load do
-    Process.send_after(self(), :update_load, 1000)
+    reschedule()
 
-    millisec = :os.system_time
-    load = :math.sin(:math.pi*2*(0.0002) * millisec)
-    IO.inspect(load)
+    millisec = :erlang.system_time / 100_000_000
+    load = (:math.cos(:math.pi*2*(0.002) * millisec) * :math.cos(:math.pi*2*(0.013) * millisec) + 1) / 2
 
+    EnergyTreeWeb.Endpoint.broadcast!("energy", "load_change", %{load: load})
     new_state(%{load: load})
+  end
+
+  defp reschedule() do
+    Process.send_after(self(), :update_load, 100)
   end
 end
