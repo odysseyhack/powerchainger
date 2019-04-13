@@ -107,15 +107,15 @@
 // OBJECTS
 @import "../node_modules/inuitcss/objects/objects.wrapper";
 @import "../node_modules/inuitcss/objects/objects.layout";
-@import "../node_modules/inuitcss/objects/objects.media";
-@import "../node_modules/inuitcss/objects/objects.flag";
-@import "../node_modules/inuitcss/objects/objects.list-bare";
-@import "../node_modules/inuitcss/objects/objects.list-inline";
-@import "../node_modules/inuitcss/objects/objects.box";
-@import "../node_modules/inuitcss/objects/objects.block";
-@import "../node_modules/inuitcss/objects/objects.ratio";
-@import "../node_modules/inuitcss/objects/objects.crop";
-@import "../node_modules/inuitcss/objects/objects.table";
+// @import "../node_modules/inuitcss/objects/objects.media";
+// @import "../node_modules/inuitcss/objects/objects.flag";
+// @import "../node_modules/inuitcss/objects/objects.list-bare";
+// @import "../node_modules/inuitcss/objects/objects.list-inline";
+// @import "../node_modules/inuitcss/objects/objects.box";
+// @import "../node_modules/inuitcss/objects/objects.block";
+// @import "../node_modules/inuitcss/objects/objects.ratio";
+// @import "../node_modules/inuitcss/objects/objects.crop";
+// @import "../node_modules/inuitcss/objects/objects.table";
 // @import "../node_modules/inuitcss/objects/objects.pack";
 @import "objects/objects.wrapper";
 
@@ -123,6 +123,7 @@
 // COMPONENTS
 @import "components/components.car-visualization";
 @import "components/components.mode-toggle";
+@import "components/components.circular-chart";
 @import "components/components.price-indicator";
 @import "components/components.settings-toggle";
 

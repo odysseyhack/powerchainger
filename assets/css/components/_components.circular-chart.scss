@@ -1,0 +1,71 @@
+.flex-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.c-circular-chart {
+    $el: '.c-circular-chart';
+
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 250px;
+
+    &__bg {
+        fill: none;
+        stroke: color(base, 200);
+        stroke-width: 1.2;
+    }
+
+    &__fill {
+        fill: none;
+        stroke-width: 1.2;
+        animation: progress 1s ease-out forwards;
+    }
+
+    &--yellow #{$el}__fill {
+        stroke: #ff9f00;
+    }
+    
+    &--grey #{$el}__fill {
+        stroke: color(base, 500);
+    }
+
+    &--green #{$el}__fill {
+        stroke: #4CC790;
+    }
+
+    &--blue #{$el}__fill {
+        stroke: #3c9ee5;
+    }
+    
+    &__percentage {
+        fill: color(base, 700);
+        font-size: 8px;
+        font-weight: 100;
+        text-anchor: middle;
+    }
+    
+    &__label {
+        fill: color(base, 700);
+        font-size: 3.6px;
+        text-anchor: middle;
+    }
+    
+    &__sublabel {
+        fill: color(base, 400);
+        font-size: 2.3px;
+        text-anchor: middle;
+        font-weight: 500;
+
+        &--orange {
+            fill: color(orange);
+        }
+    }
+}
