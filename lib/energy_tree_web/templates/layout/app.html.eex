@@ -10,23 +10,6 @@
     <link href='https://cdn.jsdelivr.net/npm/boxicons@1.9.3/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
-    <header>
-    <div class="o-ratio  o-ratio--price-indicator c-price-indicator  c-price-indicator--green">
-        <div class="o-ratio__content">
-            <div class="c-price-indicator__overlay"></div>
-            <span class="c-price-indicator__label">Energy price
-                <i class="c-price-indicator__icon  bx bx-like"></i>
-            </span>
-        </div>
-    </div>
-      <section class="o-wrapper">
-        <nav role="navigation">
-          <ul>
-            <li></li>
-          </ul>
-        </nav>
-      </section>
-    </header>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
