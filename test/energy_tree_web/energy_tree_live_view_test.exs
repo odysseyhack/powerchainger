@@ -4,5 +4,4 @@ defmodule EnergyTreeWeb.EnergyTreeLiveViewTest do
 
   # Doctests can be found inline in the modules' documentation.
   doctest Navigation
-  doctest Preferences
 end
