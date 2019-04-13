@@ -14,6 +14,7 @@ defmodule EnergyTree.Application do
       EnergyTreeWeb.Endpoint,
       # Starts a worker by calling: EnergyTree.Worker.start_link(arg)
       # {EnergyTree.Worker, arg},
+      EnergyTree.Dispatcher
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
