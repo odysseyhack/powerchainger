@@ -1,4 +1,11 @@
 defmodule EnergyTree.Dispatcher do
+  @moduledoc """
+  An 'energy dispatcher'.
+  This implementation is very much simplified, to be simple to show in the demo.
+
+  We use a double sinusoid wave to simulate energy load fluctuations.
+
+  """
   use ExActor.GenServer, export: __MODULE__
 
   defstart start_link(_) do

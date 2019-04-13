@@ -31,7 +31,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
       :charging
       iex> Preferences.new |> Preferences.set_charging_mode(:i_do_not_exist) |> Map.get(:charging_mode)
       ** (ArgumentError) unsupported `mode`
- 
+
   """
   def set_charging_mode(struct, mode) when mode in @charging_modes do
     %__MODULE__{struct | charging_mode: mode}
@@ -72,5 +72,4 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
   def set_minimum_battery(struct, _minimum_battery) do
     raise ArgumentError, "improper `minimum_battery` value"
   end
-
 end
