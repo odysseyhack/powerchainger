@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="376px" height="250px" viewBox="0 0 376 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54 (76480) - https://sketchapp.com -->
+    <title>circle-overlay</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="376" height="250"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.600309">
+        <g id="dashboard">
+            <g id="circle-overlay">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill-opacity="0.03" fill="#FFFFFF" xlink:href="#path-1"></use>
+                <g id="Group-4" mask="url(#mask-2)">
+                    <g transform="translate(158.000000, -182.000000)" id="Oval">
+                        <circle fill="#E7E7E7" cx="183.5" cy="183.5" r="183.5"></circle>
+                        <circle fill="#CFCFCF" cx="183" cy="184" r="116"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

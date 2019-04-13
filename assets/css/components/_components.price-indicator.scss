@@ -1,10 +1,13 @@
 .c-price-indicator {
+    position: absolute;
     text-align: right;
+    width: 100%;
+    z-index: -1;
 
     &__label {
         color: #fff;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: center;
         font-size: 10px;
         font-weight: 600;
@@ -18,18 +21,38 @@
         opacity: .7;
         padding: $space-tiny;
     }
-}
+    &::before {
+        content: '';
+        display: block;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        position: absolute;
+        background-image: 
+            url(../static/images/circle-shape.svg),
+            linear-gradient(180deg, #00DDB7 48%, #00B881 100%),
+            url(../static/images/circle-overlay.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    &__overlay {
+        display: block;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        padding-bottom: 66%;
+        position: absolute;
+        background-image: url(../static/images/circle-overlay.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        mix-blend-mode: multiply;
+        width: 100%;
+    }
+    
+    &--green {
 
-.c-price-indicator::before,
-.c-price-indicator--green::before {
-    background-image: linear-gradient(180deg, #00DDB7 48%, #00B881 100%);
-    border-radius: 50%;
-    content: '';
-    display: block;
-    height: 140vw;
-    position: absolute;
-    right: 0;
-    transform: translate(50%, -50%);
-    width: 140vw;
-    z-index: -1;
+        background-image: linear-gradient(180deg, #00DDB7 48%, #00B881 100%);
+    }
 }

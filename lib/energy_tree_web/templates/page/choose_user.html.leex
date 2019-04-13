@@ -4,3 +4,27 @@ Choose your account
     <li phx-click="sign_in" phx-value="<%= index %>"><%= index%>:  <%= user.name %></li>
 <% end %>
 </ul>
+<div class="c-mode-toggle">
+    <a class="c-mode-toggle__option  c-mode-toggle__option--charge
+        <%= if @preferences.charging_mode == :charging do %>c-mode-toggle__option--active<% end %>" 
+        phx-click="toggle_charging_mode" phx-value="charging">
+        <svg class="c-mode-toggle__icon" width="15" height="9" xmlns="http://www.w3.org/2000/svg"><path d="M12.995.656v2.756h1.385V6.15h-1.385v2.755H2.005c-.386 0-.714-.134-.983-.403a1.319 1.319 0 0 1-.402-.966V2.026c0-.376.134-.698.402-.967.269-.268.597-.403.983-.403h10.99zM5.438 8.213l4.125-3.432-2.756-.757 1.386-2.675-4.125 3.432 2.74.758-1.37 2.674z" fill="#C3C9CB" fill-rule="nonzero"/></svg>
+        Charging
+    </a>
+    <a class="c-mode-toggle__option  c-mode-toggle__option--cost-saving 
+        <%= if @preferences.charging_mode == :saving do %>c-mode-toggle__option--active<% end %>"
+        phx-click="toggle_charging_mode" phx-value="saving" >
+        <svg class="c-mode-toggle__icon" width="13" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M3.575 1.05C5.092.167 7.2-.108 9.9.225c1.4.183 2.217.392 2.45.625.033.05.025.092-.025.125A5.004 5.004 0 0 0 10.7 2.338c-.45.575-.775 1.124-.975 1.65-.2.525-.47 1.074-.813 1.65-.341.575-.729 1.012-1.162 1.312-1.15.8-2.742.817-4.775.05A9.8 9.8 0 0 0 1.55 9.2c-.1.2-.296.23-.588.088C.671 9.146.568 8.982.65 8.8c.367-.833.904-1.637 1.613-2.413.708-.775 1.441-1.412 2.2-1.912a29.64 29.64 0 0 1 2.2-1.325c.708-.383 1.295-.667 1.762-.85l.675-.25c-.117 0-.287.004-.512.013-.226.008-.659.066-1.3.174-.642.109-1.259.267-1.85.476-.592.208-1.267.558-2.025 1.05A9.242 9.242 0 0 0 1.4 5.524c-.183-2.017.542-3.508 2.175-4.475z" fill="#C3C9CB" fill-rule="nonzero"/></svg>
+        Cost-saving
+    </a>
+</div>
+
+<p class="u-text-center">
+    <%= if @preferences.charging_mode == :charging do %>
+        Your car is being charged as quickly as possible.
+    <% end %>
+
+    <%= if @preferences.charging_mode == :saving do %>
+        Your car will charge and decharge depending on current energy prices.
+    <% end %>
+</p>

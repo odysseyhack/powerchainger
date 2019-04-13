@@ -11,10 +11,13 @@
   </head>
   <body>
     <header>
-    <div class="c-price-indicator">
-        <span class="c-price-indicator__label">Energy price
-            <i class="c-price-indicator__icon  bx bx-like"></i>
-        </span>
+    <div class="o-ratio  o-ratio--price-indicator c-price-indicator  c-price-indicator--green">
+        <div class="o-ratio__content">
+            <div class="c-price-indicator__overlay"></div>
+            <span class="c-price-indicator__label">Energy price
+                <i class="c-price-indicator__icon  bx bx-like"></i>
+            </span>
+        </div>
     </div>
       <section class="o-wrapper">
         <nav role="navigation">

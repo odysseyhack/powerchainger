@@ -39,9 +39,9 @@
 <div> <%= @battery_level %>% </div>
 <div phx-click="change_page" phx-value="tokens" > <%= @token_count %> tokens </div>
 <div>
-  <h3>Charging Mode</h3>
-  <button phx-click="toggle_charging_mode" phx-value="charging" <%= if @preferences.charging_mode == :charging do %>style="background-color: green;" <% end %> >Charge Mode</button>
-  <button phx-click="toggle_charging_mode" phx-value="saving" <%= if @preferences.charging_mode == :saving do %>style="background-color: green;" <% end %>>Saving Mode</button>
+    <h3>Charging Mode</h3>
+    ...
+    
   <%= if @preferences.charging_mode == :saving do %>
   Your car is in saving mode until
     <form phx-change="change_saving_until">
