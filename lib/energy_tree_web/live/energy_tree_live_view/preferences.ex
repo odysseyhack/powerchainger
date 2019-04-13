@@ -1,23 +1,30 @@
 defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
+  require Integer
   @moduledoc """
   The preferences struct is used to store user preferences
   that are meant to persist to disk.
 
   (and in the future to IPFS and/or IOTA)
   """
-  defstruct [:charging_mode, :user_name, :saving_until, :minimum_battery]
+  defstruct [:charging_mode, :saving_until, :minimum_battery, :has_ev?]
 
   @charging_modes [:charging, :saving]
 
   @doc """
   Initializes the Preference struct with some logical defaults.
   """
-  def new do
-    %__MODULE__{charging_mode: :charging,
-                user_name: "Batman",
-                saving_until: ~T[20:00:00],
-                minimum_battery: 25
-    }
+  def new(user_id \\ 0) do
+    if Integer.is_odd(user_id) do
+      %__MODULE__{
+        has_ev?: false
+      }
+    else
+        %__MODULE__{charging_mode: :charging,
+                    saving_until: ~T[20:00:00],
+                    minimum_battery: 25,
+                    has_ev?: true
+        }
+    end
   end
 
   @doc """

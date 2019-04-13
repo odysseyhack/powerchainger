@@ -108,7 +108,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   defp load_preferences(user_id) do
     case :dets.lookup(Preferences, user_id) do
       [{^user_id, preferences}] -> preferences
-      [] -> Preferences.new
+      [] -> Preferences.new(user_id)
     end
   end
 

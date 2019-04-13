@@ -11,9 +11,9 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
   alias EnergyTreeWeb.EnergyTreeLiveView.{Navigation, Preferences}
 
   @users %{
-    0 => %{name: "Fortunate Alice"},
-    1 => %{name: "Batman"},
-    2 => %{name: "Poor Joe"},
+    0 => %{name: "Fortunate Alice", ev: :renault},
+    1 => %{name: "Poor Joe", ev: nil},
+    2 => %{name: "Batman", ev: :batmobile},
   }
 
   def new do
