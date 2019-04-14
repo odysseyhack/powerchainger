@@ -6,7 +6,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
 
   (and in the future to IPFS and/or IOTA)
   """
-  defstruct [:charging_mode, :saving_until, :minimum_battery, :has_ev?]
+  defstruct [:charging_mode, :saving_until, :minimum_battery, :has_ev?, :onboarded?, :neighbour_friendly?]
 
   @charging_modes [:charging, :saving]
 
@@ -16,15 +16,21 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
   def new(user_id \\ 0) do
     if Integer.is_odd(user_id) do
       %__MODULE__{
-        has_ev?: false
+        has_ev?: false,
+        onboarded?: false,
       }
     else
         %__MODULE__{charging_mode: :saving,
                     saving_until: ~T[20:00:00],
                     minimum_battery: 25,
-                    has_ev?: true
+                    has_ev?: true,
+                    onboarded?: false,
         }
     end
+  end
+
+  def onboard!(struct, neighbour_friendly?) when is_boolean(neighbour_friendly?) do
+    %__MODULE__{struct | onboarded?: true, neighbour_friendly?: neighbour_friendly?}
   end
 
   @doc """
