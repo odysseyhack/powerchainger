@@ -39,6 +39,76 @@
             </svg>
         </div>
     </div>
+
+    <div class="o-wrapper">
+        <h2 class="c-heading  u-margin-bottom-small">
+            12 april 2019
+        </h2>
+        <ul class="c-list-group">
+            <li class="c-list-group__item">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <svg width="11" height="23" xmlns="http://www.w3.org/2000/svg"><path d="M3.44 21.31c-.065-.05 1.167-8.198 1.127-8.279-.04-.081-3.28-1.478-3.397-1.694-.08-.162 6.325-10.195 6.39-10.147.093.045-1.17 8.183-1.133 8.236.037.053 3.304 1.446 3.397 1.694.097.276-6.259 10.259-6.384 10.19z" stroke="#C3C9CB" stroke-width="1.5" fill="none" fill-rule="evenodd"/></svg>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__timestamp">
+                            14:24
+                        </div>
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                You’ve delivered back to the grid
+                            </div>
+                            <div class="c-transaction__reward">
+                                +50
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="c-list-group__item">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <svg width="20" height="11" xmlns="http://www.w3.org/2000/svg"><g fill="#C3C9CB" fill-rule="nonzero"><path d="M19.907 9.25c-1.568-.05-2.434-1.038-4.054-4.1l-.03-.057a46.297 46.297 0 0 0-.638-1.179C13.79 1.442 12.49.25 10.447.25c-2.045 0-3.358 1.2-4.749 3.664-.183.325-.333.603-.638 1.179l-.03.057C3.41 8.212 2.544 9.2.976 9.25l.048 1.5c2.337-.075 3.455-1.351 5.332-4.898l.03-.057c.299-.565.444-.834.619-1.144 1.15-2.038 2.094-2.901 3.442-2.901 1.344 0 2.277.856 3.432 2.901.174.31.32.58.618 1.144l.03.057c1.877 3.547 2.995 4.823 5.332 4.898l.048-1.5z"/><path d="M1 4.5h1v-1H1v1zm2 0h1v-1H3v1zm2 0h1v-1H5v1zm2 0h1v-1H7v1zm2 0h1v-1H9v1zm2 0h1v-1h-1v1zm2 0h1v-1h-1v1zm2 0h1v-1h-1v1zm2 0h1v-1h-1v1zm2 0h1v-1h-1v1z"/></g></svg>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__timestamp">
+                            15:03
+                        </div>
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                Using energy outside peak hours
+                            </div>
+                            <div class="c-transaction__reward">
+                                +12
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="c-list-group__item">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <svg width="19" height="19" xmlns="http://www.w3.org/2000/svg"><path d="M5.257 9.594c0-.616.119-1.197.357-1.743s.56-1.022.966-1.428a4.593 4.593 0 0 1 1.427-.965A4.314 4.314 0 0 1 9.75 5.1c.616 0 1.197.119 1.743.357.546.237 1.021.56 1.427.965.406.406.728.882.966 1.428.238.546.357 1.127.357 1.743 0 .616-.119 1.197-.357 1.742a4.593 4.593 0 0 1-.966 1.428 4.593 4.593 0 0 1-1.427.966 4.314 4.314 0 0 1-1.743.357 4.314 4.314 0 0 1-1.743-.357 4.593 4.593 0 0 1-1.427-.966 4.593 4.593 0 0 1-.966-1.428 4.314 4.314 0 0 1-.357-1.742zM9.75 6.906a2.59 2.59 0 0 0-1.9.788 2.59 2.59 0 0 0-.787 1.9c0 .742.262 1.375.787 1.9a2.59 2.59 0 0 0 1.9.787 2.59 2.59 0 0 0 1.9-.787 2.59 2.59 0 0 0 .787-1.9 2.59 2.59 0 0 0-.787-1.9 2.59 2.59 0 0 0-1.9-.788zm-.903 8.966h1.806v2.687H8.847v-2.687zm0-15.244h1.806v2.688H8.847V.628zM.785 8.691h2.687v1.806H.785V8.69zm15.243 0h2.687v1.806h-2.687V8.69zM2.779 15.305l1.89-1.911 1.28 1.26-1.91 1.91-1.26-1.26zM13.55 4.534l1.89-1.911 1.28 1.26-1.91 1.91-1.26-1.26zm-8.86 1.26L2.78 3.882l1.26-1.26 1.91 1.91-1.26 1.26zm12.03 9.51l-1.28 1.26-1.89-1.91 1.26-1.26 1.91 1.91z" fill="#C3C9CB" fill-rule="nonzero"/></svg>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__timestamp">
+                            14:24
+                        </div>
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                Using surplus of renewable energy
+                            </div>
+                            <div class="c-transaction__reward">
+                                +31
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

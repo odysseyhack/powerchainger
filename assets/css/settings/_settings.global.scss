@@ -9,7 +9,7 @@ $global-font-family: 'rubrik-new', sans-serif;
 // Base typographical styles.
 
 $inuit-global-font-size: 12px;
-$inuit-global-line-height: $inuit-global-spacing-unit;
+$inuit-global-line-height: 16px;
 
 // MQ breakpoints
 $mq-breakpoints: (
@@ -27,7 +27,7 @@ $inuit-ratios: (
 );
 
 // Miscellaneous
-$global-radius: 50px;
+$global-radius: 4px;
 
 // CSS transitions/animations
 $easeOutExpo: cubic-bezier(.19, 1, .22, 1);
