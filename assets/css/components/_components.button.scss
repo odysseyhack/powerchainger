@@ -62,7 +62,7 @@
 
 
 .c-btn--secondary {
-    background-color: #2f4054;
+    background-color: color(base, 900);
 
     &,
     &:hover,
@@ -74,7 +74,7 @@
 
     &:hover,
     &:focus {
-        background-color: #1d2733;
+        background-color: color(base, 700);
     }
 
 }
@@ -112,6 +112,11 @@
 
 .c-btn--large {
     padding: $inuit-global-spacing-unit $inuit-global-spacing-unit-large;
+}
+
+.c-btn--wide {
+    padding-left: $inuit-global-spacing-unit-large;
+    padding-right: $inuit-global-spacing-unit-large;
 }
 
 
