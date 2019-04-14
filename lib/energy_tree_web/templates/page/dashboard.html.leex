@@ -134,9 +134,9 @@
 </div>
 
 <div class="o-wrapper  u-margin-top  u-margin-bottom-small">
-    <div class="flex-wrapper">
+    <div class="flex-wrapper" phx-click="change_page" phx-value="tokens">
         <%= circle_chart("#{@battery_level}%", @battery_level, "battery", Preferences.charging_mode(assigns), ["c-circular-chart--green", "u-margin-right-small"], [charging_color_class(Preferences.charging_mode(assigns))]) %>
-        <%= circle_chart("#{@token_count}", @token_count, "tokens", "earned today", ["c-circular-chart--yellow", "u-margin-left-small"], []) %>
+        <%= circle_chart("#{@token_count}", @token_count, "tokens", "earned today", ["c-circular-chart--yellow"], []) %>
     </div>
 </div>
 
