@@ -168,7 +168,7 @@
     </p>
 </div>
 
-<%= if @preferences.charging_mode == :saving do %>
+<%= if @preferences.charging_mode == :saving && false do %>
 Your car is in saving mode until
 <form phx-change="change_saving_until">
     <input name="hours" type="number" min=0 max=23 value="<%= @preferences.saving_until.hour %>" />:
