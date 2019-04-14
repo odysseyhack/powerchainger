@@ -1,6 +1,29 @@
-Choose your account
-<ul>
-<%= for {index, user} <- @users do %>
-    <li phx-click="sign_in" phx-value="<%= index %>"><%= user.name %></li>
-<% end %>
-</ul>
+<div class="s-account">
+    <strong>Choose your account</strong>
+    <ul>
+        <%= for {index, user} <- @users do %>
+        <li phx-click="sign_in" phx-value="<%= index %>"><%= user.name %></li>
+        <% end %>
+    </ul>
+</div>
+<style>
+    .s-account {
+        padding: 12px;
+        font-size: 16px;
+        line-height: 1.5em;
+    }
+    
+    .s-account strong {
+        margin: 12px 0;
+        font-weight: 700;
+    }
+    
+    .s-account li {
+        cursor: pointer;
+    }
+    
+    .s-account li:hover {
+        cursor: pointer;
+        color: #00CF5F;
+    }
+</style>
