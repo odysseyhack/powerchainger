@@ -47,8 +47,10 @@
 .c-settings-toggle {
     color: color(base, 600);
     cursor: pointer;
-    font-size: 24px;
+    font-size: 21px;
     padding: $space-small;
+    position: relative;
+    top: 8px;
     transition: color .5s $easeOutExpo;
 
     &:hover {
