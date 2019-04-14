@@ -4,9 +4,9 @@
     &__icon {
         align-items: baseline;
         display: flex;
-        flex-shrink: 0;
+        flex: 0 0 auto;
         justify-content: center;
-        margin-right: $space-small;
+        margin-right: $space-tiny;
         margin-top: $space-tiniest;
         width: 40px;
         

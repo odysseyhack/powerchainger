@@ -1,0 +1,98 @@
+.c-onboarding {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+        justify-content: end;
+        overflow: scroll;
+        padding: 0 16px;
+    }
+    
+    &__logo {
+        margin-top: 16px;
+        margin-bottom: auto;
+    }
+
+    &__description {
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+        padding: 0 $space-small;
+    }
+    
+    &__footer {
+        background: #fff;
+        display: flex;
+        flex: 0 0 auto;
+        height: 70px;
+        align-items: end;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    &__btn {
+        margin-right: 16px;
+    }
+
+    input[type=radio]{
+        position: absolute;
+        visibility: hidden;
+    }
+
+     label {
+        display: block;
+        position: relative;
+        z-index: 9;
+        cursor: pointer;
+        -webkit-transition: all 0.25s linear;
+    }
+
+    .c-radio {
+        display: flex;
+        // padding: 16px 16px 16px $space-small;
+    }
+
+    .c-radio__check {
+        position: relative;
+        display: block;
+        flex: 0 0 auto;
+        border: 2px solid color(base, 300);
+        margin-right: $space-small;
+        border-radius: 100%;
+        margin: 0 10px;
+        height: 18px;
+        width: 18px;
+        transition: border .15s linear;
+        -webkit-transition: border .15s linear;
+        
+        &::before {
+            display: block;
+            position: absolute;
+            content: '';
+            border-radius: 100%;
+            height: 8px;
+            width: 8px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: background 0.25s linear;
+            -webkit-transition: background 0.25s linear;
+        }
+    }
+
+    input[type=radio]:checked ~ .c-radio__check {
+        border: 2px solid color(base, 300);
+    }
+    
+    input[type=radio]:checked ~ .c-radio__check::before{
+    background: color(turquoise);
+    }
+
+    input[type=radio]:checked ~ label{
+    color:  color(turquoise);
+    }
+}
