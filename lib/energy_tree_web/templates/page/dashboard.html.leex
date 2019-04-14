@@ -1,10 +1,14 @@
-<div class="o-ratio  o-ratio--price-indicator c-price-indicator  c-price-indicator--green">
+<div class="o-ratio  o-ratio--price-indicator c-price-indicator">
     <div class="o-ratio__content">
-        <div class="c-price-indicator__bg"></div>
+        <div class="c-price-indicator__bg c-price-indicator--<%= if @traffic_light != :green, do: "orange", else: "green" %>"></div>
         <div class="c-price-indicator__overlay"></div>
         <div class="c-price-indicator__circle"></div>
         <span class="c-price-indicator__label">Energy price
+          <%= if @traffic_light != :green do %>
+            <i class="c-price-indicator__icon  bx bx-dislike"></i>
+          <% else %>
             <i class="c-price-indicator__icon  bx bx-like"></i>
+          <% end %>
         </span>
     </div>
 </div>
@@ -18,7 +22,7 @@
     </div>
     <div class="o-wrapper">
         <ul class="c-list-group  c-list-group--shadow">
-            <li class="c-list-group__item  c-list-group__item--link" phx-click="change_page" phx-value="profile">
+            <li class="c-list-group__item  c-list-group__item--link">
                 <div class="c-transaction">
                     <div class="c-transaction__icon">
                         <i class="bx  bx-user-circle"></i>
@@ -35,7 +39,7 @@
                     </div>
                 </div>
             </li>
-            <li class="c-list-group__item  c-list-group__item--link" phx-click="change_page" phx-value="settings">
+            <li class="c-list-group__item  c-list-group__item--link">
                 <div class="c-transaction">
                     <div class="c-transaction__icon">
                         <i class="bx  bx-rename"></i>
@@ -117,9 +121,6 @@
 <div class="c-car-visualization">
     <img class="c-car-visualization__img" src="images/car.png" alt="Renault Zoe">
 </div>
-
-<div>Traffic Light</div>
-<div>Traffic Light: <%= @traffic_light %></div>
 
 <div> Battery Indicator </div>
 <div>
