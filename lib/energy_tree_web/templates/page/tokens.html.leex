@@ -45,10 +45,10 @@
 
     <div class="o-wrapper  u-margin-top-large">
         <%= for {date, events} <- Event.fake_history |> Enum.group_by(&Timex.to_date(&1.datetime)) |> Enum.reverse do %>
-            <h2 class="c-heading  u-margin-bottom-small">
+            <h2 class="c-heading-list-group  u-margin-bottom-small">
                 <%= date %>
             </h2>
-            <ul class="c-list-group c-list-group--shadow">
+            <ul class="c-list-group c-list-group--shadow  u-margin-bottom">
                 <%= for event <- events do %>
                     <li class="c-list-group__item">
                         <%= render_event(event) %>

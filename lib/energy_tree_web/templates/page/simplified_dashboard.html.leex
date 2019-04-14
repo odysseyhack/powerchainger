@@ -1,30 +1,95 @@
+<div class="o-ratio  o-ratio--price-indicator c-price-indicator">
+    <div class="o-ratio__content">
+        <div class="c-price-indicator__bg c-price-indicator--<%= if @traffic_light != :green, do: "orange", else: "green" %>"></div>
+        <div class="c-price-indicator__overlay"></div>
+        <div class="c-price-indicator__circle"></div>
+        <span class="c-price-indicator__label">Energy price
+            <%= if @traffic_light != :green do %>
+            <i class="c-price-indicator__icon  bx bx-dislike"></i>
+            <% else %>
+            <i class="c-price-indicator__icon  bx bx-like"></i>
+            <% end %>
+        </span>
+    </div>
+</div>
+
 <a class="c-settings-toggle" phx-click="toggle_menu">
     <i class="bx bx-cog"></i>
 </a>
-<%= if @navigation.show_settings? do %>
-    <div class="c-car-info">
-        No EV
+<div class="c-settings-overlay<%= if @navigation.show_settings? do %>  c-settings-overlay--active<% end %>"></div>
+<div class="c-settings<%= if @navigation.show_settings? do %>  c-settings--active<% end %>">
+    <div class="c-header  c-header--settings">
+        <a class="c-settings__close  u-margin-bottom-large"  phx-click="toggle_menu">
+            <i class="bx  bx-x"></i>
+        </a>
     </div>
+    <div class="o-wrapper">
+        <ul class="c-list-group  c-list-group--shadow">
+            <li class="c-list-group__item  c-list-group__item--link">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <i class="bx  bx-user-circle"></i>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                Profile
+                            </div>
+                            <div class="c-transaction__reward">
+                                <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="c-list-group__item  c-list-group__item--link">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <i class="bx  bx-rename"></i>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                Change password
+                            </div>
+                            <div class="c-transaction__reward">
+                                <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
 
-    <h2>Page: <%= @navigation.page %></h2>
+        <ul class="c-list-group">
+            <li class="c-list-group__item  c-list-group__item--link" phx-click="sign_out">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <i class="bx  bx-log-out"></i>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                Sign out
+                            </div>
+                            <div class="c-transaction__reward">
+                                <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 
-    <nav>
-    <ul>
-        <li phx-click="change_page" phx-value="profile">Profile</li>
-        <li phx-click="change_page" phx-value="settings">Change Password</li>
-        <li phx-click="sign_out">Sign Out</li>
-    </ul>
-    </nav>
-<% end %>
-
-<div class="c-car-visualization">
-    <img class="c-car-visualization__img" src="images/car.png" alt="Renault Zoe">
+<div class="u-1/2">
+    <%= circle_chart(@token_count, @token_count/10, "today", "", ["c-circular-chart--yellow"], ["c-circular-chart__sublabel--orange"]) %>
 </div>
 
 <div>Traffic Light</div>
 <div>Traffic Light: <%= @traffic_light %></div>
 
-<div phx-click="change_page" phx-value="tokens" > <%= @token_count %> tokens </div>
 <div>
   <h3>Simplified mode</h3>
 </div>

@@ -37,6 +37,6 @@ defmodule EnergyTreeWeb.PageView do
   def event_icon(%Event{kind: :outside_peak}), do: peak_shaving_icon()
 
   def event_description(%Event{kind: :delivery}), do: "You’ve delivered back to the grid"
-  def event_description(%Event{kind: :surplus}), do: "Using surplus of renewable energy"
-  def event_description(%Event{kind: :outside_peak}), do: "Using energy outside peak hours"
+  def event_description(%Event{kind: :surplus}), do: "Used surplus of renewable energy"
+  def event_description(%Event{kind: :outside_peak}), do: "Used energy outside peak hours"
 end

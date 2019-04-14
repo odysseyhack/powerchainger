@@ -1,4 +1,6 @@
 .c-price-indicator {
+    $el: '.c-price-indicator';
+
     position: absolute;
     text-align: right;
     width: 100%;
@@ -14,10 +16,6 @@
         padding: $space-tiny;
         position: relative;
         text-transform: uppercase;
-
-        &:hover {
-            color: red;
-        }
     }
     
     &__icon {
@@ -61,7 +59,21 @@
     &--green {
         background-image: linear-gradient(180deg, #00DDB7 48%, #00B881 100%);
     }
-    &--orange {
+
+    // apparently you can't animate css gradients, so we use a pseudo-element with
+    // opacity for the orange layer and animate that in stead.
+    &__bg::after {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
         background-image: linear-gradient(180deg, #FF8229 48%, #D65900 100%);
+        transition: opacity 1s;
+    }
+    &--orange#{$el}__bg::after {
+        opacity: 1;
     }
 }
