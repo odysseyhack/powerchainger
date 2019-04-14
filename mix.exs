@@ -48,6 +48,7 @@ defmodule EnergyTree.MixProject do
       {:timex, "~> 3.1"},
       {:iota_ex, "~> 0.1.0"},
       {:stream_data, "~> 0.1", only: :test},
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
   end
 

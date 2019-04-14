@@ -66,7 +66,6 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
         {"change_minimum_battery", %{"minimum_battery_amount" => minimum_battery_amount}, socket} ->
           update_preferences(socket, &Preferences.set_minimum_battery(&1, String.to_integer(minimum_battery_amount)))
     end
-    IO.inspect(socket.assigns)
     {:noreply, socket}
   end
 
@@ -99,9 +98,11 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   end
 
   defp update_state(socket, fun) do
-    new_state = struct(State, socket.assigns)
-    |> fun.()
-    |> Map.from_struct
+    new_state =
+      State
+      |> struct(socket.assigns)
+      |> fun.()
+      |> Map.from_struct
 
     assign(socket, new_state)
   end
