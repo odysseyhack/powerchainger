@@ -14,7 +14,7 @@
                 <div class="u-1/2">
                     <%= circle_chart(@token_count, @token_count, "today", "", ["c-circular-chart--yellow", "c-circular-chart--on-green"], ["c-circular-chart__sublabel--orange"]) %>
                 </div>
-                
+
                 <div class="u-1/2">
                     <%= circle_chart(@token_count + 1337, @token_count + 1337, "total", "", ["c-circular-chart--yellow", "c-circular-chart--on-green"], []) %>
                 </div>
@@ -22,7 +22,7 @@
         </div>
         
         <div class="o-wrapper">
-            <ul class="c-donation-link  c-list-group  u-margin-bottom">
+            <ul class="c-donation-link  c-list-group c-list-group--shadow u-margin-bottom">
                 <li class="c-list-group__item">
                     <a href="#" class="c-transaction">
                         <%= pig_icon %>
@@ -44,67 +44,18 @@
 
 
     <div class="o-wrapper  u-margin-top-large">
-        <h2 class="c-heading  u-margin-bottom-small">
-            12 april 2019
-        </h2>
-        <ul class="c-list-group  c-list-group--shadow">
-            <li class="c-list-group__item">
-                <div class="c-transaction">
-                    <div class="c-transaction__icon">
-                        <%= lightning_icon() %>
-                    </div>
-                    <div class="u-flex-grow">
-                        <div class="c-transaction__timestamp">
-                            14:24
-                        </div>
-                        <div class="c-transaction__body">
-                            <div class="c-transaction__description">
-                                You’ve delivered back to the grid
-                            </div>
-                            <div class="c-transaction__reward">
-                                +50
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="c-list-group__item">
-                <div class="c-transaction">
-                    <%= peak_shaving_icon() %>
-                    <div class="u-flex-grow">
-                        <div class="c-transaction__timestamp">
-                            15:03
-                        </div>
-                        <div class="c-transaction__body">
-                            <div class="c-transaction__description">
-                                Using energy outside peak hours
-                            </div>
-                            <div class="c-transaction__reward">
-                                +12
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="c-list-group__item">
-                <div class="c-transaction">
-                    <%= sun_icon() %>
-                    <div class="u-flex-grow">
-                        <div class="c-transaction__timestamp">
-                            14:24
-                        </div>
-                        <div class="c-transaction__body">
-                            <div class="c-transaction__description">
-                                Using surplus of renewable energy
-                            </div>
-                            <div class="c-transaction__reward">
-                                +31
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <%= for {date, events} <- Event.fake_history |> Enum.group_by(&Timex.to_date(&1.datetime)) |> Enum.reverse do %>
+            <h2 class="c-heading  u-margin-bottom-small">
+                <%= date %>
+            </h2>
+            <ul class="c-list-group c-list-group--shadow">
+                <%= for event <- events do %>
+                    <li class="c-list-group__item">
+                        <%= render_event(event) %>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
     </div>
 
 
