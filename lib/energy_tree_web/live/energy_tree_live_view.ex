@@ -36,9 +36,9 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
 
   def handle_info(%Phoenix.Socket.Broadcast{topic: "energy", event: "load_change", payload: %{load: load}}, socket) do
     socket = cond do
-      load <= 0.33 ->
+      load <= 0.45 ->
         assign(socket, traffic_light: :green)
-      load <= 0.66 ->
+      load <= 0.55 ->
         assign(socket, traffic_light: :orange)
       true ->
         assign(socket, traffic_light: :red)
