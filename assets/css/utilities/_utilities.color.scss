@@ -23,7 +23,10 @@ $color-properties: (
 
 $color-values: (
   '-white': #fff,
-  '-orange': color(orange)
+  '-orange': color(orange),
+  '-green': color(brand),
+  '-turquoise': color(turquoise),
+  '-base-400': color(base, 400)
 ) !default;
 
 
