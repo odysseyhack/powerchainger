@@ -19,7 +19,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
         has_ev?: false
       }
     else
-        %__MODULE__{charging_mode: :charging,
+        %__MODULE__{charging_mode: :saving,
                     saving_until: ~T[20:00:00],
                     minimum_battery: 25,
                     has_ev?: true
