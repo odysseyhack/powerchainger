@@ -71,7 +71,7 @@
                                 <label for="f-option">Keep it mostly for myself</label>
                             </div>
                         </li>
-                        
+
                         <li class="c-list-group__item">
                             <div class="c-radio  u-relative">
                                 <input type="radio" id="s-option" name="selector">
@@ -79,46 +79,6 @@
                                 <label for="s-option">Invest mostly in making my neighborhood more sustainable</label>
                             </div>
                         </li>
-
-                        <!--<li class="c-list-group__item">
-                            <div class="c-transaction  align-items-ce<">
-                                <%= peak_shaving_icon() %>
-                                <div class="u-flex-grow">
-                                    <div class="c-transaction__body">
-                                        <div class="c-transaction__description">
-                                            1. Use energy outside peak hours
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="c-list-group__item">
-                            <div class="c-transaction  align-items-ce<">
-                                <%= sun_icon() %>
-                                <div class="u-flex-grow">
-                                    <div class="c-transaction__body">
-                                        <div class="c-transaction__description">
-                                                2. Use the surplus of renewable energy
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="c-list-group__item">
-                            <div class="c-transaction  align-items-ce<">
-                                <div class="c-transaction__icon">
-                                    <%= lightning_icon() %>
-                                </div>
-                                <div class="u-flex-grow">
-                                    <div class="c-transaction__body">
-                                        <div class="c-transaction__description">
-                                            3. Deliver back to the grid  (in case you own an electric vehicle)
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        -->
                     </ul>
                 </div>
 
