@@ -1,5 +1,21 @@
-.c-heading {
+.c-heading-list-group {
     color: color(brand, light);
     font-size: 10px;
     text-transform: uppercase;
+}
+
+.c-heading-tokens {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: $space-tiny;
+    text-align: center;
+}
+
+.c-heading-tokens-sub {
+    color: color(brand, lighter);
+    text-align: center;
+    // font-size: 12px;
+    line-height: 16px;
+    margin-bottom: $space-small;
 }
