@@ -7,7 +7,7 @@ defmodule EnergyTree.Persistence do
     persistence_impl().load_user(user_key)
   end
 
-  def list_user_ids() do
+  def list_user_ids do
     persistence_impl().list_user_ids()
   end
 

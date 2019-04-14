@@ -9,18 +9,18 @@ defmodule EnergyTree.Shaving.Dispatcher do
     end
   end
 
-  def should_shave?(aggregate) do
+  def should_shave?(_aggregate) do
     # TODO
   end
 
-  def calculate_aggregate(list_of_usages) do
+  def calculate_aggregate(_list_of_usages) do
     # TODO
   end
 
-  def forward_aggregate_to_parent(aggregate) do
+  def forward_aggregate_to_parent(_aggregate) do
     # TODO
   end
 
-  def ask_some_prosumers_to_produce(prosumers) do
+  def ask_some_prosumers_to_produce(_prosumers) do
   end
 end

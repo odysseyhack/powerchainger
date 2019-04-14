@@ -1,4 +1,4 @@
-defmodule EnergyTree.Persistence.PersistenceBehaviour do
+defmodule EnergyTree.Persistence.Behaviour do
   @callback persist_user(EnergyTree.User.t) :: :ok | :error
 
   @callback load_user(user_id :: any) :: {:ok, EnergyTree.User.t} | :error

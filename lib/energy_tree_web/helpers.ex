@@ -23,7 +23,6 @@ defmodule EnergyTreeWeb.Helpers do
   def charging_color_class(:idle), do: "c-circular-chart__sublabel--grey"
   def charging_color_class(:charged), do: "c-circular-chart__sublabel--green"
 
-
   def pig_icon do
     ~E"""
     <div class="c-transaction__icon">
@@ -55,4 +54,3 @@ defmodule EnergyTreeWeb.Helpers do
     """
   end
 end
-

@@ -15,7 +15,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Event do
 
   defstruct [:kind, amount: 0, datetime: nil]
 
-  def new(kind, amount, datetime \\ Timex.now) when kind in @kinds and amount >= 0 do
+  def new(kind, amount, datetime \\ Timex.now)
+  def new(kind, amount, datetime) when kind in @kinds and amount >= 0 do
     %__MODULE__{kind: kind, amount: amount, datetime: datetime}
   end
   def new(_, _, _) do
@@ -25,8 +26,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Event do
   def fake_history do
     now = Timex.now()
     for hours_ago <- (0..100 |> Enum.reverse), Integer.mod(hours_ago, 3) != 0, Integer.mod(hours_ago, 5) != 0 do
-      time = now |> Timex.shift(hours: -3*hours_ago)
-      pseudorandom_amount = Integer.mod(hours_ago * 65533, 97)
+      time = now |> Timex.shift(hours: -3 * hours_ago)
+      pseudorandom_amount = Integer.mod(hours_ago * 65_533, 97)
       pseudorandom_kind = case Integer.mod(hours_ago * 17, 7) do
                             1 -> :outside_peak
                             2 -> :surplus

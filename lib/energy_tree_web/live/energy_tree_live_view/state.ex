@@ -6,7 +6,16 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
   we enable code that is easy to test and refactor.
   """
 
-  defstruct [:navigation, :preferences, :users, :current_user_id, :token_history, :energy_usage, :traffic_light, :battery_level, :token_count]
+  defstruct [:navigation,
+             :preferences,
+             :users,
+             :current_user_id,
+             :token_history,
+             :energy_usage,
+             :traffic_light,
+             :battery_level,
+             :token_count
+            ]
 
   alias EnergyTreeWeb.EnergyTreeLiveView.{Navigation, Preferences}
 
@@ -36,7 +45,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
   Signing in a user.
   """
   def sign_in(state, user_id, preferences) do
-    %__MODULE__{ state |
+    %__MODULE__{state |
                  navigation: state.navigation |> Navigation.navigate_to(:dashboard),
                  preferences: preferences,
                  current_user_id: user_id,
@@ -123,7 +132,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
     state
   end
 
-  def simulate_update_battery_level(state = %{traffic_light: _other}) do
+  def simulate_update_battery_level(_state = %{traffic_light: _other}) do
     raise ArgumentError
   end
 end

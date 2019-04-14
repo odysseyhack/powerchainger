@@ -26,7 +26,7 @@ defmodule EnergyTreeWeb.ConnCase do
     end
   end
 
-  setup tags do
+  setup _tags do
     # :ok = Ecto.Adapters.SQL.Sandbox.checkout(EnergyTree.Repo)
 
     # unless tags[:async] do

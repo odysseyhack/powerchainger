@@ -1,6 +1,5 @@
 defmodule EnergyTree.DispatcherTest do
   use ExUnit.Case
-  import ExUnitProperties
 
   test "the Dispatcher is started as part of the supervision tree" do
     res = EnergyTree.Dispatcher.start_link(nil)
