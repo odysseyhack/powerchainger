@@ -27,8 +27,9 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
   def handle_info(:tick, socket) do
     schedule()
 
-    socket = socket
-    |> update_state(&State.simulate_update_battery_level(&1))
+    socket =
+      socket
+      |> update_state(&State.simulate_update_battery_level(&1))
 
     {:noreply, assign(socket, time: NaiveDateTime.utc_now)}
   end
