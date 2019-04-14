@@ -13,6 +13,10 @@
       
     <div class="c-header  c-header--tokens">
         <div class="o-wrapper  u-relative">
+            <a href="" class="c-back-button">
+                <i class="bx  bx-chevron-left"></i>
+                Back
+            </a>
             <h1 class="c-heading-tokens">Tokens earned</h1>
             <p class="c-heading-tokens-sub">
                 Your current level: <strong>Technician</strong><br/>
