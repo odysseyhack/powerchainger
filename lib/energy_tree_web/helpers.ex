@@ -16,5 +16,10 @@ defmodule EnergyTreeWeb.Helpers do
     </svg>
     """
   end
+
+  def charging_color_class(mode)
+  def charging_color_class(:charging), do: "c-circular-chart__sublabel--orange"
+  def charging_color_class(:idle), do: "c-circular-chart__sublabel--grey"
+  def charging_color_class(:discharging), do: "c-circular-chart__sublabel--green"
 end
 

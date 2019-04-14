@@ -79,4 +79,25 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
   def set_minimum_battery(struct, _minimum_battery) do
     raise ArgumentError, "improper `minimum_battery` value"
   end
+
+  def charging_mode(struct) do
+    case {struct.preferences.charging_mode, struct.traffic_light} do
+      {:charging, _} ->
+        if struct.battery_level < 100 do
+          :charging
+        else
+          :charged
+        end
+      {:saving, :green} ->
+        :charging
+      {:saving, :orange} ->
+        :idle
+      {:saving, :red} ->
+        if struct.preferences.minimum_battery >= struct.battery_level do
+          :idle
+        else
+          :discharging
+        end
+    end
+  end
 end
