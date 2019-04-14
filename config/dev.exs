@@ -51,6 +51,7 @@ config :energy_tree, EnergyTreeWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|scss|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
+      ~r"lib/energy_tree/.*(ex)$",
       ~r"lib/energy_tree_web/{live,views}/.*(ex)$",
       ~r"lib/energy_tree_web/templates/.*(eex)$"
     ]
