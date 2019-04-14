@@ -5,14 +5,19 @@
     z-index: -1;
 
     &__label {
+        align-items: center;
         color: #fff;
         display: flex;
-        justify-content: flex-end;
-        align-items: center;
         font-size: 10px;
         font-weight: 600;
-        text-transform: uppercase;
+        justify-content: flex-end;
         padding: $space-tiny;
+        position: relative;
+        text-transform: uppercase;
+
+        &:hover {
+            color: red;
+        }
     }
     
     &__icon {
@@ -21,22 +26,10 @@
         opacity: .7;
         padding: $space-tiny;
     }
-    &::before {
-        content: '';
-        display: block;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: 0;
-        position: absolute;
-        background-image: 
-            url(../static/images/circle-shape.svg),
-            linear-gradient(180deg, #00DDB7 48%, #00B881 100%),
-            url(../static/images/circle-overlay.svg);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    &__overlay {
+    
+    &__bg,
+    &__overlay,
+    &__circle {
         display: block;
         bottom: 0;
         left: 0;
@@ -44,11 +37,25 @@
         top: 0;
         padding-bottom: 66%;
         position: absolute;
+        width: 100%;
+    }
+    &__bg {
+        background-image: linear-gradient(180deg, #00DDB7 48%, #00B881 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    &__overlay {
         background-image: url(../static/images/circle-overlay.svg);
         background-repeat: no-repeat;
         background-size: cover;
         mix-blend-mode: multiply;
-        width: 100%;
+    }
+
+    &__circle {
+        background-image: url(../static/images/circle-shape.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     
     &--green {
