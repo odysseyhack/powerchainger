@@ -13,7 +13,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Navigation do
     %__MODULE__{page: :signed_out, show_settings?: false}
   end
 
-  @pages [:dashboard, :tokens, :profile, :settings, :signed_out]
+  @pages [:dashboard, :tokens, :profile, :settings, :signed_out, :onboarding1, :onboarding2]
 
   @doc """
   Moving to a different page.

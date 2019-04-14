@@ -45,8 +45,12 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
   Signing in a user.
   """
   def sign_in(state, user_id, preferences) do
+    new_navigation =
+      state.navigation
+      |> Navigation.navigate_to(if preferences.onboarded?, do: :dashboard, else: :onboarding1)
+
     %__MODULE__{state |
-                 navigation: state.navigation |> Navigation.navigate_to(:dashboard),
+                 navigation: new_navigation,
                  preferences: preferences,
                  current_user_id: user_id,
                  energy_usage: 42,
