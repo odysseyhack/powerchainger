@@ -1,11 +1,17 @@
 .c-back-button {
     color: #fff;
+    cursor: pointer;
     font-weight: 600;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     padding-top: 16px;
     text-transform: uppercase;
     text-align: left;
+    transition: color .2s;
+
+    &:hover {
+        color: color(brand, lighter);
+    }
 
     &__icon {
         font-size: 18px;

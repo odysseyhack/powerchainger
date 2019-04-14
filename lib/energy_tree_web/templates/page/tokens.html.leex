@@ -1,7 +1,7 @@
     <div class="c-header  c-header--tokens">
         
         <div class="o-wrapper  u-relative">
-            <a href="" class="c-back-button" phx-click="change_page" phx-value="dashboard">
+            <a class="c-back-button  u-margin-bottom" phx-click="change_page" phx-value="dashboard">
                 <i class="bx  bx-chevron-left"></i>
                 Back
             </a>
@@ -17,30 +17,32 @@
         </div>
         
         <div class="o-wrapper">
-            <ul class="c-donation-link  c-list-group c-list-group--shadow u-margin-bottom">
-                <li class="c-list-group__item">
-                    <a href="#" class="c-transaction">
-                        <%= pig_icon() %>
-                        <div class="u-flex-grow">
-                            <div class="c-transaction__body">
-                                <div class="c-transaction__description">
-                                    <span class="u-color-turquoise  u-fw-bold">GREAT!</span> You’re donating 60% of your tokens to your neighbourhood battery.
-                                </div>
-                                <div class="c-transaction__reward">
-                                    <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+            <div class="c-donation-link">
+                <ul class="c-list-group c-list-group--shadow">
+                    <li class="c-list-group__item">
+                        <a href="#" class="c-transaction">
+                            <%= pig_icon() %>
+                            <div class="u-flex-grow">
+                                <div class="c-transaction__body">
+                                    <div class="c-transaction__description">
+                                        <span class="u-color-turquoise  u-fw-bold">GREAT!</span> You’re donating 60% of your tokens to your neighbourhood battery.
+                                    </div>
+                                    <div class="c-transaction__reward">
+                                        <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
 
     <div class="o-wrapper  u-margin-top-large">
         <%= for {date, events} <- Event.fake_history |> Enum.group_by(&Timex.to_date(&1.datetime)) |> Enum.reverse do %>
-            <h2 class="c-heading-list-group  u-margin-bottom-small">
+            <h2 class="c-heading-list-group  u-margin-bottom-tiny">
                 <%= date %>
             </h2>
             <ul class="c-list-group c-list-group--shadow  u-margin-bottom">
