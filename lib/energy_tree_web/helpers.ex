@@ -54,4 +54,3 @@ defmodule EnergyTreeWeb.Helpers do
     """
   end
 end
-

@@ -6,7 +6,16 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
   we enable code that is easy to test and refactor.
   """
 
-  defstruct [:navigation, :preferences, :users, :current_user_id, :token_history, :energy_usage, :traffic_light, :battery_level, :token_count]
+  defstruct [:navigation,
+             :preferences,
+             :users,
+             :current_user_id,
+             :token_history,
+             :energy_usage,
+             :traffic_light,
+             :battery_level,
+             :token_count
+            ]
 
   alias EnergyTreeWeb.EnergyTreeLiveView.{Navigation, Preferences}
 
