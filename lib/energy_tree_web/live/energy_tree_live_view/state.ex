@@ -121,7 +121,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
   end
 
   def simulate_update_battery_level(state = %{traffic_light: :red}) do
-    if state.preferences.minimum_battery < state.battery_level do
+    if state.preferences && state.preferences.minimum_battery < state.battery_level do
       %__MODULE__{state | battery_level: state.battery_level - 1, token_count: state.token_count + 1}
     else
       state
