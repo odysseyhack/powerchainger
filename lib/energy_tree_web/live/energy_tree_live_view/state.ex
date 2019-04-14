@@ -100,7 +100,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
       0
 
   """
-  def simulate_update_battery_level(state = %{preferences: %{has_ev?: false}}) do
+  def simulate_update_battery_level(state = %{preferences: %{has_ev?: false}, traffic_light: :green}) do
     %__MODULE__{state | token_count: state.token_count + 1 }
   end
 
