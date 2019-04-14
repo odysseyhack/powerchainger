@@ -10,17 +10,45 @@
     <link href='https://cdn.jsdelivr.net/npm/boxicons@1.9.3/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
-    <div class="flex-wrapper">
-        <div class="u-1/2">
-            <%= circle_chart("30%", 50, "battery", "charging", ["c-circular-chart--green"], ["c-circular-chart__sublabel--orange"]) %>
+      
+    <div class="c-header  c-header--tokens">
+        <div class="o-wrapper  u-relative">
+            <div class="flex-wrapper">
+                <div class="u-1/2">
+                    <%= circle_chart("30%", 50, "today", "", ["c-circular-chart--yellow", "c-circular-chart--on-green"], ["c-circular-chart__sublabel--orange"]) %>
+                </div>
+                
+                <div class="u-1/2">
+                    <%= circle_chart(40, 50, "total", "", ["c-circular-chart--yellow", "c-circular-chart--on-green"], []) %>
+                </div>
+            </div>
         </div>
-
-        <div class="u-1/2">
-            <%= circle_chart(40, 50, "tokens", "earned today", ["c-circular-chart--grey"], []) %>
+        
+        <div class="o-wrapper">
+            <ul class="c-donation-link  c-list-group  u-margin-bottom">
+                <li class="c-list-group__item">
+                    <a href="#" class="c-transaction">
+                        <div class="c-transaction__icon">
+                            <svg width="20" height="19" xmlns="http://www.w3.org/2000/svg"><g fill="#C3C9CB" fill-rule="evenodd"><path d="M1.487 12.669c-.331-1.132-.459-2.3-.256-3.418.37-2.042 1.79-3.544 4.39-4.206 1.843-.455 3.687-.38 5.38.02.398.093.717.187.947.266l4.929-.704.026.838c.01.355-.063.776-.2 1.268-.057.207-.125.422-.202.642-.06.172-.121.342-.185.505.172.182.36.4.55.65.379.5.669 1.016.834 1.544l1.924.715-.985 3.315h-1.723l-.087.111c-.25.318-.522.636-.812.934-.4.413-.798.756-1.107.947.086 1.27.116 1.783.116 1.89v.75h-3.001l-.733-1.201-.199.023c-.931.101-1.898.13-2.814.04-.783-.076-1.479-.235-2.12-.53l-.156 1.668H2.717l-.912-5.161a8.104 8.104 0 0 1-.318-.906zm10.29-5.798l-.185-.073a7.36 7.36 0 0 0-.934-.274c-1.48-.348-3.092-.414-4.672-.024-2.03.517-3.014 1.558-3.279 3.02-.155.854-.052 1.8.22 2.728.108.373.215.65.28.79l.059.185.709 4.013h.662l.192-2.059h.683c.29 0 .688.148 1.124.463.448.24 1.059.394 1.79.466.798.078 1.667.052 2.505-.04.29-.031.503-.062.615-.082l.503-.088.818 1.34h.615c-.022-.351-.054-.839-.1-1.491l-.033-.497.252-.085.192-.14c.34-.17.735-.492 1.147-.917a10.605 10.605 0 0 0 .983-1.18l.223-.322h1.374l.266-.898-1.382-.513-.075-.423c-.072-.41-.308-.87-.66-1.335a6.223 6.223 0 0 0-.73-.804l-.416-.361.221-.505a12.57 12.57 0 0 0 .502-1.39l-3.469.496z" fill-rule="nonzero"/><path d="M11.366 3.153c0 1.607-1.332 2.902-2.965 2.902-1.632 0-2.964-1.295-2.964-2.902C5.437 1.545 6.769.25 8.4.25c1.633 0 2.965 1.295 2.965 2.903zm-1.5 0c0-.77-.65-1.403-1.465-1.403-.813 0-1.464.633-1.464 1.403s.65 1.402 1.464 1.402 1.465-.633 1.465-1.402z" fill-rule="nonzero"/><path d="M1.436 9.76a.708.708 0 0 1-.718.699A.709.709 0 0 1 0 9.76c0-.386.321-.698.718-.698.397 0 .718.312.718.698M14.066 10.284a.709.709 0 0 1-.718.698.708.708 0 0 1-.718-.698c0-.385.321-.698.718-.698.397 0 .718.313.718.698"/></g></svg>
+                        </div>
+                        <div class="u-flex-grow">
+                            <div class="c-transaction__body">
+                                <div class="c-transaction__description">
+                                    <span class="u-color-turquoise  u-fw-bold">GREAT!</span> You’re donating 60% of your tokens to your neighbourhood battery.
+                                </div>
+                                <div class="c-transaction__reward">
+                                    <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <div class="o-wrapper">
+
+    <div class="o-wrapper  u-margin-top-large">
         <h2 class="c-heading  u-margin-bottom-small">
             12 april 2019
         </h2>

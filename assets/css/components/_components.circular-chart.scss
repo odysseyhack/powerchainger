@@ -44,20 +44,20 @@
     &--blue #{$el}__fill {
         stroke: #3c9ee5;
     }
-    
+
     &__percentage {
         fill: color(base, 700);
         font-size: 8px;
         font-weight: 100;
         text-anchor: middle;
     }
-    
+
     &__label {
         fill: color(base, 700);
         font-size: 3.6px;
         text-anchor: middle;
     }
-    
+
     &__sublabel {
         fill: color(base, 400);
         font-size: 2.3px;
@@ -70,6 +70,21 @@
 
         &--green {
             fill: color(brand);
+        }
+    }
+
+    // charts in token view on green background
+    &--on-green {
+        #{$el}__bg {
+            stroke: #00DBB5;
+        }
+
+        #{$el}__percentage {
+            fill: #fff;
+        }
+
+        #{$el}__label {
+            fill: color(turquoise, light);
         }
     }
 }

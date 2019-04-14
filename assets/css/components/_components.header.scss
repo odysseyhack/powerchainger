@@ -1,0 +1,19 @@
+.c-header {
+    &--tokens {
+        background-image: linear-gradient(180deg,#00DDB7 0%,#00B881 100%);
+        position: relative;
+
+        &::before{
+            content: '';
+            background-image: url(../static/images/tokens-bg.svg);
+            background-size: cover;
+            background-position: top center;
+            opacity: .6;
+            mix-blend-mode: multiply;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 0;
+        }
+    }
+}
