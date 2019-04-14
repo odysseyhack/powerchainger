@@ -45,62 +45,11 @@
             12 april 2019
         </h2>
         <ul class="c-list-group">
+          <%= for event <- Event.fake_history do %>
             <li class="c-list-group__item">
-                <div class="c-transaction">
-                    <div class="c-transaction__icon">
-                        <%= lightning_icon() %>
-                    </div>
-                    <div class="u-flex-grow">
-                        <div class="c-transaction__timestamp">
-                            14:24
-                        </div>
-                        <div class="c-transaction__body">
-                            <div class="c-transaction__description">
-                                You’ve delivered back to the grid
-                            </div>
-                            <div class="c-transaction__reward">
-                                +50
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <%= render_event(event) %>
             </li>
-            <li class="c-list-group__item">
-                <div class="c-transaction">
-                    <%= peak_shaving_icon() %>
-                    <div class="u-flex-grow">
-                        <div class="c-transaction__timestamp">
-                            15:03
-                        </div>
-                        <div class="c-transaction__body">
-                            <div class="c-transaction__description">
-                                Using energy outside peak hours
-                            </div>
-                            <div class="c-transaction__reward">
-                                +12
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="c-list-group__item">
-                <div class="c-transaction">
-                    <%= sun_icon() %>
-                    <div class="u-flex-grow">
-                        <div class="c-transaction__timestamp">
-                            14:24
-                        </div>
-                        <div class="c-transaction__body">
-                            <div class="c-transaction__description">
-                                Using surplus of renewable energy
-                            </div>
-                            <div class="c-transaction__reward">
-                                +31
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
+          <% end %>
         </ul>
     </div>
 
