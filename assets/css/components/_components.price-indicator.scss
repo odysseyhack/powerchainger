@@ -52,7 +52,9 @@
     }
     
     &--green {
-
         background-image: linear-gradient(180deg, #00DDB7 48%, #00B881 100%);
+    }
+    &--orange {
+        background-image: linear-gradient(180deg, #FF8229 48%, #D65900 100%);
     }
 }

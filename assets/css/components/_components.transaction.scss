@@ -2,12 +2,13 @@
     display: flex;
 
     &__icon {
+        align-items: baseline;
         display: flex;
         flex-shrink: 0;
         justify-content: center;
         margin-right: $space-small;
+        margin-top: $space-tiniest;
         width: 40px;
-        align-items: center;
     }
 
     &__body {
@@ -19,6 +20,7 @@
     &__timestamp {
         color: color(base, 500);
         line-height: 12px;
+        margin-bottom: $space-tiniest;
     }
 
     &__description {
