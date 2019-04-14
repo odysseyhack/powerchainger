@@ -1,16 +1,30 @@
 .c-list-group {
-    border-radius: $global-radius;
-    background: #FFF;
-    box-shadow: 0 0 5px 0 rgba(0,0,0,0.04), 
-        0 5px 8px 0 rgba(0,0,0,0.08), 
-        0 2px 2px 0 rgba(0,0,0,0.04);
     list-style: none;
     margin: 0;
     padding: 0;
     
+    &--shadow {
+        border-radius: $global-radius;
+        background: #FFF;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,0.04), 
+            0 5px 8px 0 rgba(0,0,0,0.08), 
+            0 2px 2px 0 rgba(0,0,0,0.04);
+    }
+    
     &__item {
         border-bottom: 1px solid color(base, 100);
         padding: 16px 16px 16px $space-small;
+
+        &--link {
+            cursor: pointer;
+            &:hover {
+                color: color(turquoise);
+                .bx::before {
+                    color: color(turquoise);
+                    opacity: 0.6;
+                }
+            }
+        }
         
         &:last-child {
             border-color: transparent;

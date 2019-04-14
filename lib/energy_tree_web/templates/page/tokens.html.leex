@@ -1,12 +1,15 @@
-<button phx-click="change_page" phx-value="dashboard">Back</button>
     <div class="c-header  c-header--tokens">
+        
+        <div class="o-wrapper  u-relative">
+            <a href="" class="c-back-button" phx-click="change_page" phx-value="dashboard">
+                <i class="bx  bx-chevron-left"></i>
+                Back
+            </a>
             <h1 class="c-heading-tokens">Tokens earned</h1>
             <p class="c-heading-tokens-sub">
                 Your current level: <strong>Technician</strong><br/>
                 205 tokens required for next level
             </p>
-
-        <div class="o-wrapper  u-relative">
             <div class="flex-wrapper">
                 <div class="u-1/2">
                     <%= circle_chart(@token_count, @token_count, "today", "", ["c-circular-chart--yellow", "c-circular-chart--on-green"], ["c-circular-chart__sublabel--orange"]) %>
@@ -45,7 +48,7 @@
             <h2 class="c-heading  u-margin-bottom-small">
                 <%= date %>
             </h2>
-            <ul class="c-list-group">
+            <ul class="c-list-group c-list-group--shadow">
                 <%= for event <- events do %>
                     <li class="c-list-group__item">
                         <%= render_event(event) %>

@@ -1,6 +1,8 @@
 <div class="o-ratio  o-ratio--price-indicator c-price-indicator  c-price-indicator--green">
     <div class="o-ratio__content">
+        <div class="c-price-indicator__bg"></div>
         <div class="c-price-indicator__overlay"></div>
+        <div class="c-price-indicator__circle"></div>
         <span class="c-price-indicator__label">Energy price
             <i class="c-price-indicator__icon  bx bx-like"></i>
         </span>
@@ -14,26 +16,102 @@
         <img class="c-car-info__logo" src="images/logo-renault.png" alt="Renault Zoe">
         Renault Zoe
     </div>
+    <div class="o-wrapper">
+        <ul class="c-list-group  c-list-group--shadow">
+            <li class="c-list-group__item  c-list-group__item--link" phx-click="change_page" phx-value="profile">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <i class="bx  bx-user-circle"></i>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                Profile
+                            </div>
+                            <div class="c-transaction__reward">
+                                <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="c-list-group__item  c-list-group__item--link" phx-click="change_page" phx-value="settings">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <i class="bx  bx-rename"></i>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                Change password
+                            </div>
+                            <div class="c-transaction__reward">
+                                <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="c-list-group__item" >
+                <div class="c-transaction" href="#">
+                    <div class="c-transaction__icon">
+                        <i class="bx  bx-battery"></i>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                <p class="u-margin-bottom-tiny">In cost-saving mode, keep my battery above</p>
+                                <form phx-change="change_minimum_battery">
+                                    <select name="minimum_battery_amount">
+                                        <%= for percentage <- (0..95), Integer.mod(percentage, 5) == 0 do %>
+                                        <option <%= if @preferences.minimum_battery == percentage, do: "selected" %> value="<%= percentage %>"><%= percentage %> %</option>
+                                        <% end %>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
 
-    <h2>Page: <%= @navigation.page %></h2>
-
-    <nav>
-    <ul>
-        <li phx-click="change_page" phx-value="profile">Profile</li>
-        <li>In cost-saving mode, keep my battery above
-        <form phx-change="change_minimum_battery">
-        <select name="minimum_battery_amount">
-            <%= for percentage <- (0..95), Integer.mod(percentage, 5) == 0 do %>
-            <option <%= if @preferences.minimum_battery == percentage, do: "selected" %> value="<%= percentage %>"><%= percentage %> %</option>
-            <% end %>
-        </select>
-        </form>
-        </li>
-        <li phx-click="change_page" phx-value="settings">Change Password</li>
-        <li phx-click="sign_out">Sign Out</li>
-        <li>Forget My Car</li>
-    </ul>
-    </nav>
+        <ul class="c-list-group">
+            <li class="c-list-group__item  c-list-group__item--link" phx-click="sign_out">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <i class="bx  bx-log-out"></i>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description">
+                                Sign out
+                            </div>
+                            <div class="c-transaction__reward">
+                                <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="c-list-group__item  c-list-group__item--link">
+                <div class="c-transaction">
+                    <div class="c-transaction__icon">
+                        <i class="bx  bx-trash-alt  u-color-red"></i>
+                    </div>
+                    <div class="u-flex-grow">
+                        <div class="c-transaction__body">
+                            <div class="c-transaction__description  u-color-red">
+                                Forget my car
+                            </div>
+                            <div class="c-transaction__reward">
+                                <i class="bx bx-chevron-right  u-color-base-400  u-fs-large"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 <% end %>
 
 <div class="c-car-visualization">
