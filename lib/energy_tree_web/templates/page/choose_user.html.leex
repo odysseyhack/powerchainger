@@ -1,6 +1,6 @@
 Choose your account
 <ul>
 <%= for {index, user} <- @users do %>
-    <li phx-click="sign_in" phx-value="<%= index %>"><%= index%>:  <%= user.name %></li>
+    <li phx-click="sign_in" phx-value="<%= index %>"><%= user.name %></li>
 <% end %>
 </ul>
