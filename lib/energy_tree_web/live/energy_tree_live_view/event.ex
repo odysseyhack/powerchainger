@@ -24,8 +24,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Event do
 
   def fake_history do
     now = Timex.now()
-    for hours_ago <- (0..200 |> Enum.reverse), Integer.mod(hours_ago, 3) != 0, Integer.mod(hours_ago, 5) != 0 do
-      time = now |> Timex.shift(hours: -hours_ago)
+    for hours_ago <- (0..100 |> Enum.reverse), Integer.mod(hours_ago, 3) != 0, Integer.mod(hours_ago, 5) != 0 do
+      time = now |> Timex.shift(hours: -3*hours_ago)
       pseudorandom_amount = Integer.mod(hours_ago * 65533, 97)
       pseudorandom_kind = case Integer.mod(hours_ago * 17, 7) do
                             1 -> :outside_peak

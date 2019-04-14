@@ -41,16 +41,18 @@
 
 
     <div class="o-wrapper  u-margin-top-large">
-        <h2 class="c-heading  u-margin-bottom-small">
-            12 april 2019
-        </h2>
-        <ul class="c-list-group">
-          <%= for event <- Event.fake_history do %>
-            <li class="c-list-group__item">
-              <%= render_event(event) %>
-            </li>
-          <% end %>
-        </ul>
+        <%= for {date, events} <- Event.fake_history |> Enum.group_by(&Timex.to_date(&1.datetime)) |> Enum.reverse do %>
+            <h2 class="c-heading  u-margin-bottom-small">
+                <%= date %>
+            </h2>
+            <ul class="c-list-group">
+                <%= for event <- events do %>
+                    <li class="c-list-group__item">
+                        <%= render_event(event) %>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
     </div>
 
 
