@@ -106,4 +106,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
         end
     end
   end
+
+  def set_nicety(struct, nicety) do
+    %__MODULE__{struct | neighbour_friendly?: nicety != 0}
+  end
 end

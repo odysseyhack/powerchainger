@@ -65,8 +65,23 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView do
           update_preferences(socket, &Preferences.set_saving_until(&1, time))
         {"change_minimum_battery", %{"minimum_battery_amount" => minimum_battery_amount}, socket} ->
           update_preferences(socket, &Preferences.set_minimum_battery(&1, String.to_integer(minimum_battery_amount)))
+        {"change_onboarding", %{"nicety" => nicety}, socket} ->
+          update_preferences(socket, &Preferences.set_nicety(&1, String.to_integer(nicety)))
+        {"finish_onboarding", %{"nicety" => nicety}, socket} ->
+          finish_onboarding(socket, nicety)
     end
     {:noreply, socket}
+  end
+
+  defp finish_onboarding(socket, nicety) do
+    IO.inspect({socket, nicety})
+
+    socket
+    |> update_field(:navigation, &Navigation.navigate_to(&1, :dashboard))
+    |> update_preferences(fn prefs ->
+      prefs
+      |> Map.put(:onboarded?, true)
+    end)
   end
 
   defp sign_in(socket, user_id) do

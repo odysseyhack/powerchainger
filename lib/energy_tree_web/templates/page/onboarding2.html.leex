@@ -1,4 +1,8 @@
 <h3>
   Onboarding2
 </h3>
-<button phx-click="change_page" phx-value="dashboard">Next</button>
+<form phx-change="change_onboarding" phx-submit="finish_onboarding">
+  <input name="nicety" type="radio" value="0" <%= unless @preferences.neighbour_friendly?, do: "checked" %>/>
+  <input name="nicety" type="radio" value="1" <%= if @preferences.neighbour_friendly?, do: "checked" %>/>
+  <button >Start Saving!</button>
+</form>
