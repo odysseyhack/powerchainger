@@ -45,8 +45,9 @@ defmodule EnergyTree.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
       {:exactor, "~> 2.2.4"},
+      {:timex, "~> 3.1"},
       {:iota_ex, "~> 0.1.0"},
-      {:stream_data, "~> 0.1", only: :test}
+      {:stream_data, "~> 0.1", only: :test},
     ]
   end
 

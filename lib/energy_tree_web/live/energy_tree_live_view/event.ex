@@ -9,15 +9,30 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Event do
   - `:outside_peak` for when using energy outside of peak hours, thus reducing load on the grid.
   - `:surplus` for when adding renewable energy such as solar power back to the grid.
   """
+  use Timex
 
   @kinds [:delivery, :outside_peak, :surplus]
 
   defstruct [:kind, amount: 0, datetime: nil]
 
-  def new(kind, amount, datetime = %NaiveDateTime{} \\ NaiveDateTime.utc_now) when kind in @kinds and amount >= 0 do
+  def new(kind, amount, datetime \\ Timex.now) when kind in @kinds and amount >= 0 do
     %__MODULE__{kind: kind, amount: amount, datetime: datetime}
   end
   def new(_, _, _) do
     raise ArgumentError
+  end
+
+  def fake_history do
+    now = Timex.now()
+    for hours_ago <- (0..200 |> Enum.reverse), Integer.mod(hours_ago, 3) != 0, Integer.mod(hours_ago, 5) != 0 do
+      time = now |> Timex.shift(hours: -hours_ago)
+      pseudorandom_amount = Integer.mod(hours_ago * 65533, 97)
+      pseudorandom_kind = case Integer.mod(hours_ago * 17, 7) do
+                            1 -> :outside_peak
+                            2 -> :surplus
+                            _ -> :delivery
+                          end
+      new(pseudorandom_kind, pseudorandom_amount, time)
+    end
   end
 end
