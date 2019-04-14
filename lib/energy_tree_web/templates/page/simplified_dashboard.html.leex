@@ -83,14 +83,28 @@
     </div>
 </div>
 
-<div class="u-1/2">
-    <%= circle_chart(@token_count, @token_count/10, "today", "", ["c-circular-chart--yellow"], ["c-circular-chart__sublabel--orange"]) %>
+<div class="o-wrapper">
+    <div class="u-1/2  u-padding-top-huge">
+        <%= circle_chart(@token_count, @token_count/10, "tokens", "earned today", ["c-circular-chart--yellow"], []) %>
+    </div>
+    <p class="c-heading-tokens-sub  u-color-base-600  u-text-left">
+        Your current level: <strong>Technician</strong><br/>
+        <small class="u-color-base-400">205 tokens required for next level</small>
+    </p>
 </div>
 
-<div>Traffic Light</div>
-<div>Traffic Light: <%= @traffic_light %></div>
-
-<div>
-  <h3>Simplified mode</h3>
+<div class="o-wrapper  u-padding-top  u-bg-color-base-100">
+    <%= for {date, events} <- Event.fake_history |> Enum.group_by(&Timex.to_date(&1.datetime)) |> Enum.reverse do %>
+        <h2 class="c-heading-list-group  u-margin-bottom-small">
+            <%= date %>
+        </h2>
+        <ul class="c-list-group c-list-group--shadow  u-margin-bottom">
+            <%= for event <- events do %>
+                <li class="c-list-group__item">
+                    <%= render_event(event) %>
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
 </div>
 
