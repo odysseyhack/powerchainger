@@ -11,13 +11,8 @@
                 205 tokens required for next level
             </p>
             <div class="flex-wrapper">
-                <div class="u-1/2">
-                    <%= circle_chart(@token_count, @token_count, "today", "", ["c-circular-chart--yellow", "c-circular-chart--on-green"], ["c-circular-chart__sublabel--orange"]) %>
-                </div>
-
-                <div class="u-1/2">
-                    <%= circle_chart(@token_count + 1337, @token_count + 1337, "total", "", ["c-circular-chart--yellow", "c-circular-chart--on-green"], []) %>
-                </div>
+                <%= circle_chart(@token_count, @token_count, "today", "", ["c-circular-chart--yellow  u-margin-right-tiny", "c-circular-chart--on-green"], ["c-circular-chart__sublabel--orange"]) %>
+                <%= circle_chart(@token_count + 1337, @token_count + 1337, "total", "", ["c-circular-chart--yellow  u-margin-left-tiny", "c-circular-chart--on-green"], []) %>
             </div>
         </div>
         
