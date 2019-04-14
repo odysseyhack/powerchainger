@@ -13,6 +13,11 @@
       
     <div class="c-header  c-header--tokens">
         <div class="o-wrapper  u-relative">
+            <h1 class="c-heading-tokens">Tokens earned</h1>
+            <p class="c-heading-tokens-sub">
+                Your current level: <strong>Technician</strong><br/>
+                205 tokens required for next level
+            </p>
             <div class="flex-wrapper">
                 <div class="u-1/2">
                     <%= circle_chart("30%", 50, "today", "", ["c-circular-chart--yellow", "c-circular-chart--on-green"], ["c-circular-chart__sublabel--orange"]) %>
@@ -49,7 +54,7 @@
 
 
     <div class="o-wrapper  u-margin-top-large">
-        <h2 class="c-heading  u-margin-bottom-small">
+        <h2 class="c-heading-list-group  u-margin-bottom-small">
             12 april 2019
         </h2>
         <ul class="c-list-group">
