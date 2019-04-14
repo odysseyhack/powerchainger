@@ -11,10 +11,21 @@
 <a class="c-settings-toggle" phx-click="toggle_menu">
     <i class="bx bx-cog"></i>
 </a>
-<%= if @navigation.show_settings? do %>
-    <div class="c-car-info">
-        <img class="c-car-info__logo" src="images/logo-renault.png" alt="Renault Zoe">
-        Renault Zoe
+<div class="c-settings-overlay<%= if @navigation.show_settings? do %>  c-settings-overlay--active<% end %>"></div>
+<div class="c-settings<%= if @navigation.show_settings? do %>  c-settings--active<% end %>">
+    <div class="c-header  c-header--settings">
+        <a class="c-settings__close"  phx-click="toggle_menu">
+            <i class="bx  bx-x"></i>
+        </a>
+        <div class="c-car-info">
+            <div class="c-car-info__logo">
+                <img class="c-car-info__img" src="images/logo-renault.png" alt="Renault Zoe">
+            </div>
+            <p class="c-heading-large">
+                Renault ZOE
+            </p>
+            <a class="c-btn  c-btn--light  c-btn--ghost  c-btn--small" href="#">Change car</a>
+        </div>
     </div>
     <div class="o-wrapper">
         <ul class="c-list-group  c-list-group--shadow">
@@ -96,7 +107,7 @@
             <li class="c-list-group__item  c-list-group__item--link">
                 <div class="c-transaction">
                     <div class="c-transaction__icon">
-                        <i class="bx  bx-trash-alt  u-color-red"></i>
+                        <i class="bx  bx-history  u-color-red"></i>
                     </div>
                     <div class="u-flex-grow">
                         <div class="c-transaction__body">
@@ -112,7 +123,7 @@
             </li>
         </ul>
     </div>
-<% end %>
+</div>
 
 <div class="c-car-visualization">
     <img class="c-car-visualization__img" src="images/car.png" alt="Renault Zoe">

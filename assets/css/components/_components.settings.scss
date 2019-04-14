@@ -1,0 +1,57 @@
+.c-settings {
+    background: white;
+    bottom: 0;
+    overflow-y: scroll;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    transform: translateY(100%);
+    transition: .7s transform $easeOutExpo;
+    z-index: 9999;
+    
+    &--active {
+        transform: translateY(0);
+    }
+
+    &__close {
+        align-self: end;
+        cursor: pointer;
+        color: color(brand, dark);
+        font-size: 24px;
+        padding: $space-small  $space-small 0 0;
+    }
+    
+    &-overlay {
+        opacity: 0;
+        background: color(base, 900);
+        height: 100%;
+        width: 100%;
+        transition: 1s opacity;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+        
+        &--active {
+            z-index: initial;
+            display: block;
+            opacity: 0.8;
+        }
+
+    }
+}
+
+.c-settings-toggle {
+    color: color(base, 600);
+    cursor: pointer;
+    font-size: 24px;
+    padding: $space-small;
+    transition: color .5s $easeOutExpo;
+
+    &:hover {
+        color: color(brand);
+    }
+}

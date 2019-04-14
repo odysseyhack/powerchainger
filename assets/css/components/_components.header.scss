@@ -1,8 +1,13 @@
 .c-header {
-    &--tokens {
-        background-image: linear-gradient(180deg,#00DDB7 0%,#00B881 100%);
-        position: relative;
+    background-image: linear-gradient(180deg,#00DDB7 0%,#00B881 100%);
+    display: flex;
+    flex-direction: column; 
 
+    &--settings {
+        margin-bottom: -24px;
+    }
+
+    &--tokens {
         &::before{
             content: '';
             background-image: url(../static/images/tokens-bg.svg);

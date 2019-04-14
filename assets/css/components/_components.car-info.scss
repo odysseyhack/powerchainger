@@ -1,0 +1,27 @@
+.c-car-info {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: $space-large;
+
+    &__logo {
+        background: #fff;
+        border-radius: 60px;
+        box-shadow: 0 0 5px 0 rgba(0,0,0,0.09), 
+            0 5px 8px 0 rgba(0,0,0,0.16), 
+            0 2px 2px 0 rgba(0,0,0,0.08);
+        height: 120px;
+        margin-bottom: $space-small;
+        overflow: hidden;
+        position: relative;
+        width: 120px;
+    }
+    
+    &__img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+    }
+}
