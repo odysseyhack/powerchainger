@@ -3,6 +3,6 @@ defmodule EnergyTreeWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "EnergyTree"
+    assert html_response(conn, 200) =~ "Flex"
   end
 end

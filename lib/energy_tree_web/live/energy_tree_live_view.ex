@@ -1,7 +1,7 @@
 defmodule EnergyTreeWeb.EnergyTreeLiveView do
   use Phoenix.LiveView
 
-  alias EnergyTreeWeb.EnergyTreeLiveView.{Navigation, Preferences, State}
+  alias EnergyTreeWeb.EnergyTreeLiveView.{Navigation}
 
   @impl true
   def render(assigns) do

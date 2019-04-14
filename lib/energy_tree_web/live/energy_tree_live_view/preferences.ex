@@ -43,7 +43,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
   def set_charging_mode(struct, mode) when mode in @charging_modes do
     %__MODULE__{struct | charging_mode: mode}
   end
-  def set_charging_mode(struct, _mode) do
+  def set_charging_mode(_struct, _mode) do
     raise ArgumentError, "unsupported `mode`"
   end
 
@@ -76,7 +76,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Preferences do
   def set_minimum_battery(struct, minimum_battery) when minimum_battery in 0..99 do
     %__MODULE__{struct | minimum_battery: minimum_battery}
   end
-  def set_minimum_battery(struct, _minimum_battery) do
+  def set_minimum_battery(_struct, _minimum_battery) do
     raise ArgumentError, "improper `minimum_battery` value"
   end
 

@@ -15,7 +15,8 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.Event do
 
   defstruct [:kind, amount: 0, datetime: nil]
 
-  def new(kind, amount, datetime \\ Timex.now) when kind in @kinds and amount >= 0 do
+  def new(kind, amount, datetime \\ Timex.now)
+  def new(kind, amount, datetime) when kind in @kinds and amount >= 0 do
     %__MODULE__{kind: kind, amount: amount, datetime: datetime}
   end
   def new(_, _, _) do

@@ -14,7 +14,7 @@ defmodule EnergyTree.User.Server do
 
   defcall inspect, state: state, do: reply(state)
 
-  defcast set(new_user), state: {user_id, state} do
+  defcast set(new_user), state: {user_id, _state} do
     Task.start(fn ->
       Persistence.persist_user(new_user)
     end)

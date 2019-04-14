@@ -123,7 +123,7 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
     state
   end
 
-  def simulate_update_battery_level(state = %{traffic_light: _other}) do
+  def simulate_update_battery_level(_state = %{traffic_light: _other}) do
     raise ArgumentError
   end
 end

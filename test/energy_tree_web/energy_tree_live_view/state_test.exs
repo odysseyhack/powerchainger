@@ -4,7 +4,4 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.StateTest do
 
   # Doctests can be found inline in the modules' documentation.
   doctest State
-
-  # For more rigorous testing, perform proptests:
-  import ExUnitProperties
 end
