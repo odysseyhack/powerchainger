@@ -100,8 +100,12 @@ defmodule EnergyTreeWeb.EnergyTreeLiveView.State do
       0
 
   """
+  def simulate_update_battery_level(state = %{preferences: %{charging_mode: :charging}}) do
+    %__MODULE__{state | battery_level: min(state.battery_level + 1, 100) }
+  end
+
   def simulate_update_battery_level(state = %{traffic_light: :green}) do
-    %__MODULE__{state | battery_level: state.battery_level + 1 }
+    %__MODULE__{state | battery_level: min(state.battery_level + 1, 100) }
   end
 
   def simulate_update_battery_level(state = %{traffic_light: :red}) do
